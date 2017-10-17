@@ -47,3 +47,7 @@ Realizzazione di un bot tramite DialogFlow (bot API) capace di rispondere alle r
 * Marco Merlin  
 
 Realizzazione del server node capace di rispondere alle richieste della pagina web per comunicare con il bot e alle eventuali richieste del bot (tramite API ad hoc).
+
+https://i.imgur.com/in6eyhv.jpg
+
+<img src="https://i.imgur.com/in6eyhv.jpg"/>
