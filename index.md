@@ -1,6 +1,6 @@
 ## Welcome to Deasy Pages
 
-Deasy è un chatbot in grado di aiutare gli studenti del DISI.
+Deasy è un bot capace di rispondere alle domande più frequenti poste dagli studenti Unitn Disi.
 
 ### Features
 
@@ -18,7 +18,7 @@ Il bot sarà in grado di fornire infomrazioni base riguardo i dubbi più frequen
 
 Versione 2.0
 
-Il bot sarà in grado di fornire infomrazioni più strutturate riguardo i dubbi più frequenti degli studenti Disi e di offrire servizi come:
+Il bot sarà in grado di fornire informazioni più strutturate riguardo i dubbi più frequenti degli studenti Disi e di offrire servizi come:
 
 * Orari Autobus e Treni.
 * Orari aule.
@@ -26,3 +26,12 @@ Il bot sarà in grado di fornire infomrazioni più strutturate riguardo i dubbi 
 * Servizio Meteo.
 * Conversare con il bot.
 * Pagina web per aggiornare il bot.
+
+###Membri Progetto
+
+* Michele Armellini,  
+* Gabriele Maurina,  
+* Alberto Bellumat,  
+* Riccardo Facchin,  
+* Enrico Eggidi,  
+* Marco Merlin
