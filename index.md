@@ -1,8 +1,8 @@
-## Welcome to Deasy Pages
+# Welcome to Deasy Pages
 
 Deasy è un bot capace di rispondere alle domande più frequenti poste dagli studenti Unitn Disi.
 
-### Features
+## Features
 
 #### Versione 1.0
 
@@ -27,7 +27,7 @@ Il bot sarà in grado di fornire informazioni più strutturate riguardo i dubbi 
 * Conversare con il bot.
 * Pagina web per aggiornare il bot.
 
-### Organizzazione
+## Organizzazione
 
 #### Front End
 * Enrico Eggidi
@@ -48,6 +48,6 @@ Realizzazione di un bot tramite DialogFlow (bot API) capace di rispondere alle r
 
 Realizzazione del server node capace di rispondere alle richieste della pagina web per comunicare con il bot e alle eventuali richieste del bot (tramite API ad hoc).
 
-### Mockup
+## Mockup
 
 <img src="https://i.imgur.com/in6eyhv.jpg"/>
