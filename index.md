@@ -4,7 +4,7 @@ Deasy è un chatbot in grado di aiutare gli studenti del DISI.
 
 ### Features
 
-####Versione 1.0
+Versione 1.0
 
 Il bot sarà in grado di fornire infomrazioni base riguardo i dubbi più frequenti degli studenti Disi come:
 
