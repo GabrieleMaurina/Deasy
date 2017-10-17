@@ -4,7 +4,7 @@ Deasy è un bot capace di rispondere alle domande più frequenti poste dagli stu
 
 ### Features
 
-Versione 1.0
+#### Versione 1.0
 
 Il bot sarà in grado di fornire infomrazioni base riguardo i dubbi più frequenti degli studenti Disi come:
 
@@ -16,7 +16,7 @@ Il bot sarà in grado di fornire infomrazioni base riguardo i dubbi più frequen
 * Informazioni riguardo il sistema di trasporti trentino.
 * Quali informazioni può fornire il bot.
 
-Versione 2.0
+#### Versione 2.0
 
 Il bot sarà in grado di fornire informazioni più strutturate riguardo i dubbi più frequenti degli studenti Disi e di offrire servizi come:
 
@@ -27,7 +27,7 @@ Il bot sarà in grado di fornire informazioni più strutturate riguardo i dubbi 
 * Conversare con il bot.
 * Pagina web per aggiornare il bot.
 
-###Membri Progetto
+### Membri Progetto
 
 * Michele Armellini,  
 * Gabriele Maurina,  
