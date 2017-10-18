@@ -57,3 +57,13 @@ Realizzazione del server node capace di rispondere alle richieste della pagina w
 ## Mockup
 
 <img src="https://i.imgur.com/in6eyhv.jpg"/>
+
+## Strategia branching
+
+Verrà utilizzata una strategia di branching gitflow semplificata con un branch master, un branch development e i branch feature.
+
+<img src="https://camo.githubusercontent.com/98627ae5f592cb521b0b441c885a56c574f3ae65/687474703a2f2f6d61726367672e636f6d2f6173736574732f626c6f672f6769742d666c6f772d6265666f72652e6a7067"/>
+
+## Mezzi di comunicazione
+
+Per la comunicazione tra membri viene utilizzato un gruppo telegram, mentre per la gestione delle issue e lo stato del progetto viene utilizzato waffle.
