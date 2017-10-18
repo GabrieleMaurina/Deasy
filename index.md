@@ -52,7 +52,9 @@ Realizzazione del server node capace di rispondere alle richieste della pagina w
 
 ## Mockup
 
-<img src="https://i.imgur.com/in6eyhv.jpg"/>
+![Bot mockup](https://i.imgur.com/HbZLWAf.jpg)  
+![Web mockup 1](https://i.imgur.com/pb6WyQA.jpg)  
+![Web mockup 2](https://i.imgur.com/bOAln8z.jpg)
 
 ## Strategia branching
 
