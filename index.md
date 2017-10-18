@@ -6,7 +6,7 @@ Deasy è un bot capace di rispondere alle domande più frequenti poste dagli stu
 
 #### Versione 1.0
 
-Il bot sarà in grado di fornire infomrazioni base riguardo i dubbi più frequenti degli studenti Disi come:
+Il bot sarà in grado di fornire informazioni base riguardo i dubbi più frequenti degli studenti Disi come:
 
 * Come fare ad andare in erasmus.
 * Come funziona il tirocinio.
@@ -15,6 +15,10 @@ Il bot sarà in grado di fornire infomrazioni base riguardo i dubbi più frequen
 * Come richiedere esonero tasse e borse di studio.
 * Informazioni riguardo il sistema di trasporti trentino.
 * Quali informazioni può fornire il bot.
+
+Sarà possibile chattare con il bot tramite una pagina web dedicata.
+
+Sarà presente una pagina ad accesso restrittivo dove sarà possibile aggiungere argomenti trattabili dal bot o modificare argomenti esistenti.
 
 #### Versione 2.0
 
@@ -26,6 +30,8 @@ Il bot sarà in grado di fornire informazioni più strutturate riguardo i dubbi 
 * Servizio Meteo.
 * Conversare con il bot.
 * Pagina web per aggiornare il bot.
+
+Sarà possibile chattare con il bot tramite telegram o altri sistemi di messaggistica.
 
 ## Organizzazione
 
