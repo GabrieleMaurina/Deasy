@@ -62,4 +62,4 @@ Verrà utilizzata una strategia di branching gitflow semplificata con un branch 
 
 ## Mezzi di comunicazione
 
-Per la comunicazione tra membri viene utilizzato un gruppo telegram, mentre per la gestione delle issue e lo stato del progetto viene utilizzato waffle.
+Per la comunicazione tra membri viene utilizzato un gruppo telegram, mentre per la gestione delle issue e lo stato del progetto viene utilizzato [Waffle.io](https://waffle.io/GabrieleMaurina/Deasy).
