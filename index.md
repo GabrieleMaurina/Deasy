@@ -35,24 +35,20 @@ Sarà possibile chattare con il bot tramite telegram o altri sistemi di messaggi
 
 ## Organizzazione
 
-#### Front End
-* Enrico Eggidi
-* Alberto Bellumat  
+### Front End
+Enrico Eggidi, Alberto Bellumat  
 
-Realizzazione di una pagina web hostata da un server node con una chat per poter comunicare con il bot.
+Realizzazione di due pagine web hostate su un server node. La prima pagina sarà dedicata ad una chat per comunicare con il bot. La seconda pagina sarà dedicata a l'inserimento di nuovi argomenti che il bot potrà affrontare o la modifica di risposte o domande già esistenti.
 
-#### Bot Logic
-* Gabriele Maurina
-* Riccardo Facchin
-* Riccardo Ariotti
+### Logica Bot
+Gabriele Maurina, Riccardo Facchin, Riccardo Ariotti  
 
 Realizzazione di un bot tramite DialogFlow (bot API) capace di rispondere alle richieste di base dell'utente e di inoltrare le richieste al server node per richieste più complesse.
 
-#### Back End
-* Michele Armellini
-* Marco Merlin  
+### Back End
+Michele Armellini, Marco Merlin  
 
-Realizzazione del server node capace di rispondere alle richieste della pagina web per comunicare con il bot e alle eventuali richieste del bot (tramite API ad hoc).
+Realizzazione del server node capace di rispondere alle richieste della pagina web per comunicare con il bot e alle eventuali richieste del bot (tramite API ad hoc). Relizzazione di un database di supporto all'inserimento di nuovi argomenti.
 
 ## Mockup
 
