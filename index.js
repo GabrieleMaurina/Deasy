@@ -20,6 +20,10 @@ app.post('/api/webhook',function(req,res){
 	  console.log(obj[keys[i]]);
 	}*/
 	console.log(keys);
+    
+    res.setHeader('content-type', 'application/json');
+    res.send(JSON.stringify({"contextOut":[{"parameters":{"url":"https://dashboard.heroku.com/"}}]}));
+    
 });
 
 app.listen(port);
