@@ -1,0 +1,14 @@
+{
+    "key": "tirocinio",
+    "value": "http://www.disi.unitn.it/it/internship"
+}
+
+{
+    "key": "mensa_pos",
+    "value": "http://www.operauni.tn.it/servizi/ristorazione/mense"
+}
+
+{
+    "key": "mensa_pos",
+    "value": "http://www.operauni.tn.it/servizi/ristorazione/mense"
+}
