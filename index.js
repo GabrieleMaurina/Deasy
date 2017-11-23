@@ -7,6 +7,18 @@ var app = express();
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
+// instantiate mongoose
+mongoose.Promise = global.Promise;
+var options = {
+    useMongoClient: true,
+    user: 'Deasy',
+    pass: 'deasybot'
+  };
+mongoose.connect('mongodb://Deasy:deasybot@ds117956.mlab.com:17956/marvashdb', options).then(
+    () => { console.log('DB connected successfully!'); },
+    err => { console.error(`Error while connecting to DB: ${err.message}`); }
+);
+
 // set our port
 var port = process.env.PORT || 8080;
 
