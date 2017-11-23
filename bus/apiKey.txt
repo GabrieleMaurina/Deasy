@@ -1,5 +1,0 @@
-AIzaSyBoQj3HVRuefewJw55B5CnvjbYFZBibjLA
-
-example query:
-
-https://maps.googleapis.com/maps/api/directions/json?origin=Povo+Valoni+Trento+Italy&destination=Trento+Italy&mode=transit&key=AIzaSyBoQj3HVRuefewJw55B5CnvjbYFZBibjLA
