@@ -40,7 +40,7 @@ function getValues(keys, res)
 	var params = {};
 	query.where('key').in(keys);
 	query.exec(function (err, intents) {
-		intents.foreach(function(intent, intentIndex){
+		intents.forEach(function(intent, intentIndex){
 			params[intent.key] = intent.value;
 		});
 		res.setHeader('content-type', 'application/json');
