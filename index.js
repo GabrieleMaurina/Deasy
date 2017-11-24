@@ -2,6 +2,8 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var Intent = require('./intent');
+var async = require('async');
+var bus = require('./bus/bus');
 
 // instantiate express
 var app = express();
@@ -12,11 +14,9 @@ app.use(bodyParser.json());
 // instantiate mongoose
 mongoose.Promise = global.Promise;
 var options = {
-    useMongoClient: true,
-    user: 'Deasy',
-    pass: 'deasybot'
-  };
-mongoose.connect('mongodb://Deasy:deasybot@ds117956.mlab.com:17956/marvashdb', options).then(
+	useMongoClient: true
+}
+mongoose.connect('mongodb://localhost/testdb', options).then(
     () => { console.log('DB connected successfully!'); },
     err => { console.error(`Error while connecting to DB: ${err.message}`); }
 );
@@ -37,13 +37,37 @@ console.log('Server listening on port: ' + port);
 function getValues(keys, res)
 {
 	var query = Intent.find();
-	var params = {};
 	query.where('key').in(keys);
 	query.exec(function (err, intents) {
+		var paramKeys = [];
+		var paramCB = [];
 		intents.forEach(function(intent, intentIndex){
-			params[intent.key] = intent.value;
+			paramKeys.push(intent.key);
+			if(intent.action)
+			{
+				paramCB.push(function(c){
+					bus[intent.action](function(r){
+						c(null, r);
+					});
+				});
+			}
+			else
+			{
+				paramCB.push(function(c){
+					c(null, intent.value);
+				});
+			}
 		});
-		res.setHeader('content-type', 'application/json');
-		res.send(JSON.stringify({"contextOut":[{"name":"webhook","parameters":params}]}));
+		async.parallel(paramCB, function(err, values){
+			res.setHeader('content-type', 'application/json');
+			var params = {};
+			for(var i = 0; i < values.length; i++)
+			{
+				params[paramKeys[i]] = values[i]; 
+			}
+			res.send(JSON.stringify({"contextOut":[{"name":"webhook","parameters":params}]}));
+		});
 	});
 }
+
+//var functions = {"nextDown": nextDown};
