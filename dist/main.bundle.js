@@ -118,7 +118,7 @@ AppModule = __decorate([
 /***/ "../../../../../src/app/chat/chat-dialog/chat-dialog.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h1>Angular Bot</h1>\n\n\n\n<ng-container *ngFor=\"let message of messages | async\">\n\n  <div class=\"message\" [ngClass]=\"{ 'from': message.sentBy === 'bot',\n                                    'to':   message.sentBy === 'user' }\">\n    {{ message.content }}\n  </div>\n\n</ng-container>\n\n\n<label for=\"nameField\">Your Message</label>\n\n\n<input [(ngModel)]=\"formValue\" (keyup.enter)=\"sendMessage()\" type=\"text\"><br>\n\n<button (click)=\"sendMessage()\">Send</button>\n\n"
+module.exports = "<h1>Deasy</h1>\n\n<ng-container *ngFor=\"let message of messages | async\">\n\n  <div class=\"message\" [ngClass]=\"{ 'from': message.sentBy === 'bot',\n                                    'to':   message.sentBy === 'user' }\">\n    {{ message.content }}\n  </div>\n\n</ng-container>\n\n\n<label for=\"nameField\">Your Message</label>\n\n\n<input [(ngModel)]=\"formValue\" (keyup.enter)=\"sendMessage()\" type=\"text\"><br>\n\n<button [disabled]= \"!formValue\" (click)=\"sendMessage()\">Send</button>\n\n<div class=\"input-field col s2\">\n  <button type=\"submit\" [disabled]= \"!formValue\"  class=\"waves-effect waves-light btn-floating btn-large\">\n    <i class=\"mdi mdi-send\"></i>\n  </button>\n</div>\n"
 
 /***/ }),
 
@@ -310,7 +310,7 @@ ChatService = __decorate([
 var environment = {
     production: false,
     dialogflow: {
-        angularBot: '8729a4c63aed42068c0ecefbb6d446cd'
+        angularBot: '95a6052e92a54b718bca25226221f65c'
     }
 };
 //# sourceMappingURL=environment.js.map
