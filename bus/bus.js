@@ -17,6 +17,7 @@ module.exports = {
 	},
 	nextUp: function (callback) {
 		request.get(URL_UP, function(err, res, body) {
+			var time = 'not available';
 			try {
 				time = JSON.parse(body).routes[0].legs[0].steps[0].transit_details.departure_time.text;
 			}

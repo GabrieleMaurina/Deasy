@@ -6,7 +6,8 @@ var Schema = mongoose.Schema;
 var IntentSchema = new Schema(
         {
             key: String,
-            value: String
+            value: String,
+			action: String
         });
 
-module.exports = mongoose.model('Intent', IntentSchema, 'deasyintent');
+module.exports = mongoose.model('Intent', IntentSchema, 'DeasyCollection');
