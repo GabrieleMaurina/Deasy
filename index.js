@@ -36,7 +36,9 @@ app.post('/api/webhook',function(req,res){
 	var obj = req.body.result.parameters;
 	var keys = Object.keys(obj);
 	console.log(keys);
+	console.log(req);
 	getValues(keys, res);
+	console.log(res);
 });
 
 app.listen(port);
