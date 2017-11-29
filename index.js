@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var Intent = require('./intent');
 const path = require('path');
 var async = require('async');
-var bus = require('./bus/bus');
+var utils = require('./utils');
 
 // instantiate express
 var app = express();
@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'dist')));
 
 // Catch all other routes and return the index file
-app.get('*', (req, res) => {
+app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
@@ -24,7 +24,7 @@ mongoose.Promise = global.Promise;
 var options = {
 	useMongoClient: true
 }
-mongoose.connect('mongodb://localhost/testdb', options).then(
+mongoose.connect('mongodb://deasybot:deasybot@ds117156.mlab.com:17156/deasydb', options).then(
     () => { console.log('DB connected successfully!'); },
     err => { console.error(`Error while connecting to DB: ${err.message}`); }
 );
@@ -54,7 +54,7 @@ function getValues(keys, res)
 			if(intent.action)
 			{
 				paramCB.push(function(c){
-					bus[intent.action](function(r){
+					utils[intent.action](function(r){
 						c(null, r);
 					});
 				});
