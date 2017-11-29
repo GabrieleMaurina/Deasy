@@ -35,7 +35,7 @@ var port = process.env.PORT || 8080;
 app.post('/api/webhook',function(req,res){
 	var obj = req.body.result.parameters;
 	var keys = Object.keys(obj);
-	console.log(keys);
+	console.log(req.body);
 	getValues(keys, res);
 });
 
@@ -74,6 +74,7 @@ function getValues(keys, res)
 				params[paramKeys[i]] = values[i]; 
 			}
 			res.send(JSON.stringify({"contextOut":[{"name":"webhook","parameters":params}]}));
+			console.log(JSON.stringify({"contextOut":[{"name":"webhook","parameters":params}]}));
 		});
 	});
 }
