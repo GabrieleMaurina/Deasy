@@ -277,7 +277,7 @@ var ChatService = (function () {
         this.update(userMessage);
         return this.client.textRequest(msg)
             .then(function (res) {
-            var speech = res.result.fulfillment.speech;
+            var speech = res.result.fulfillment.messages[0].speech;
             var botMessage = new Message(speech, 'bot');
             _this.update(botMessage);
         });
