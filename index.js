@@ -74,7 +74,7 @@ function getValues(keys, res)
 			{
 				params[paramKeys[i]] = values[i]; 
 			}
-			var result = JSON.stringify({"followupEvent":{"name":"webhook", "data":parameters}});//JSON.stringify({"contextOut":[{"name":"webhook","parameters":params}]});
+			var result = JSON.stringify({"followupEvent":{"name":"webhook", "data":params}});//JSON.stringify({"contextOut":[{"name":"webhook","parameters":params}]});
 			res.send(result);
 			console.log(result);
 		});
