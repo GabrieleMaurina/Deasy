@@ -17,11 +17,10 @@ mongoose.Promise = global.Promise;
 var options = {
 	useMongoClient: true
 }
-mongoose.connect('mongodb://localhost/testdb', options).then(
+mongoose.connect('mongodb://deasybot:deasybot@ds117156.mlab.com:17156/deasydb', options).then(
     () => { console.log('DB connected successfully!'); },
     err => { console.error(`Error while connecting to DB: ${err.message}`); }
 );
-
 // set our port
 var port = process.env.PORT || 8080;
 
