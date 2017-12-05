@@ -1,4 +1,4 @@
-bus = require('./bus/bus');
+var bus = require('./bus/bus');
 
 module.exports = {
 	nextUp : bus.nextUp,

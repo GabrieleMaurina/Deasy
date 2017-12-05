@@ -2,7 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var Intent = require('./intent');
-const path = require('path');
+var Parameter = require('./parameter');
 var async = require('async');
 var utils = require('./utils');
 
@@ -12,19 +12,12 @@ var app = express();
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
-app.use(express.static(path.join(__dirname, 'dist')));
-
-// Catch all other routes and return the index file
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/index.html'));
-});
-
 // instantiate mongoose
 mongoose.Promise = global.Promise;
 var options = {
 	useMongoClient: true
 }
-mongoose.connect('mongodb://deasybot:deasybot@ds117156.mlab.com:17156/deasydb', options).then(
+mongoose.connect('mongodb://localhost/testdb', options).then(
     () => { console.log('DB connected successfully!'); },
     err => { console.error(`Error while connecting to DB: ${err.message}`); }
 );
@@ -33,51 +26,77 @@ mongoose.connect('mongodb://deasybot:deasybot@ds117156.mlab.com:17156/deasydb', 
 var port = process.env.PORT || 8080;
 
 app.post('/api/webhook',function(req,res){
-	var obj = req.body.result.parameters;
-	var keys = Object.keys(obj);
-	console.log(keys);
-	console.log(req.body);
-	getValues(keys, res);
+	var intentKey = req.body.result.metadata.intentName;
+	console.log(intentKey);
+	getSpeech(intentKey, function(speech){
+		getParameters(speech, function(keys){
+			response(speech, keys, res);
+		});
+	});
 });
 
 app.listen(port);
 console.log('Server listening on port: ' + port);
 
-function getValues(keys, res)
+function getSpeech(intentKey, callback)
 {
 	var query = Intent.find();
-	query.where('key').in(keys);
-	query.exec(function (err, intents) {
-		var paramKeys = [];
-		var paramCB = [];
-		intents.forEach(function(intent, intentIndex){
-			paramKeys.push(intent.key);
-			if(intent.action)
-			{
-				paramCB.push(function(c){
-					utils[intent.action](function(r){
-						c(null, r);
-					});
-				});
-			}
-			else
-			{
-				paramCB.push(function(c){
-					c(null, intent.value);
-				});
-			}
-		});
-		async.parallel(paramCB, function(err, values){
-			res.setHeader('content-type', 'application/json');
-			var params = {};
-			for(var i = 0; i < values.length; i++)
-			{
-				params[paramKeys[i]] = values[i]; 
-			}
-			res.send(JSON.stringify({"contextOut":[{"name":"webhook","parameters":params}]}));
-			console.log(JSON.stringify({"contextOut":[{"name":"webhook","parameters":params}]}));
-		});
+	query.where('key').equals(intentKey);
+	query.exec(function(err, intents){
+		callback(intents[0].value);
 	});
 }
 
-//var functions = {"nextDown": nextDown};
+function getParameters(speech, callback)
+{
+	var wildcard = "<[a-zA-Z0-9-_]*>";
+	var keys = [...new Set(speech.match(wildcard))];
+	
+	for(var i=0;i<keys.length;i++){
+		keys[i] = keys[i].replace(/<|>/g,"");
+	}
+	
+	console.log(keys);
+	var query = Parameter.find();
+	query.where('key').in(keys);
+	query.exec(function(err, params){
+		
+		console.log(params);
+		callback(params);
+	});
+}
+
+function response(speech, keys, res)
+{
+	var paramKeys = [];
+	var paramCB = [];
+	
+		console.log(keys);
+	keys.forEach(function(param, index){
+		console.log(param);
+		paramKeys.push(param.key);
+		if(param.action)
+		{
+			paramCB.push(function(c){
+				utils[param.action](function(r){
+					c(null, r);
+				});
+			});
+		}
+		else
+		{
+			paramCB.push(function(c){
+				c(null, param.value);
+			});
+		}
+	});
+	async.parallel(paramCB, function(err, values){
+			res.setHeader('content-type', 'application/json');
+			for(var i = 0; i < values.length; i++)
+			{
+				var tmp = "<"+paramKeys[i]+">";
+				speech = speech.replace(new RegExp(tmp,'g'), values[i]);
+			}
+			res.send(JSON.stringify({"speech":speech}));
+		});
+}
