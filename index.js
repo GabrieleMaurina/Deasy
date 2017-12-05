@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var Intent = require('./intent');
+const path = require('path');
 var Parameter = require('./parameter');
 var async = require('async');
 var utils = require('./utils');
