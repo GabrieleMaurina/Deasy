@@ -7,6 +7,7 @@ var IntentSchema = new Schema(
         {
             key: String,
             value: String,
+			action: String
         });
 
-module.exports = mongoose.model('Intent', IntentSchema, 'Intents');
+module.exports = mongoose.model('Parameter', IntentSchema, 'Parameters');
