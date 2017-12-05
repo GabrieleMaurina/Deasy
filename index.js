@@ -25,10 +25,13 @@ mongoose.connect('mongodb://deasybot:deasybot@ds117156.mlab.com:17156/deasydb', 
 // set our port
 var port = process.env.PORT || 8080;
 
+app.use(express.static(path.join(__dirname, 'dist')));
+
 // Catch all other routes and return the index file
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
+
 
 app.post('/api/webhook',function(req,res){
 	var intentKey = req.body.result.metadata.intentName;
