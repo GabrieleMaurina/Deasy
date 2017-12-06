@@ -77,34 +77,31 @@ function getParameters(speech, callback)
 function response(speech, keys, res)
 {
 	var paramKeys = [];
-	var paramCB = [];
+	var paramValues = [];
 	
-		console.log(keys);
-	keys.forEach(function(param, index){
-		console.log(param);
-		paramKeys.push(param.key);
-		if(param.action)
-		{
-			paramCB.push(function(c){
-				utils[param.action](function(r){
-					c(null, r);
+	(function iterate(var i){
+		if(i < keys.length){
+			paramKeys.push(keys[i].key);
+			if(utils[keys[i].value]){
+				utils[keys[i].value](function(r){
+					paramValues.push(r);
+					iterate(i++);
 				});
-			});
+			}
+			else{
+				paramValues.push(keys[i].value);
+				iterate(i++);
+			}
 		}
-		else
-		{
-			paramCB.push(function(c){
-				c(null, param.value);
-			});
-		}
-	});
-	async.parallel(paramCB, function(err, values){
+		else{
 			res.setHeader('content-type', 'application/json');
-			for(var i = 0; i < values.length; i++)
+			console.log(paramKeys, paramValues);
+			for(j in paramValues)
 			{
-				var tmp = "<"+paramKeys[i]+">";
-				speech = speech.replace(new RegExp(tmp,'g'), values[i]);
+				var tmp = "<"+paramKeys[j]+">";
+				speech = speech.replace(new RegExp(tmp,'g'), paramValues[j]);
 			}
 			res.send(JSON.stringify({"speech":speech}));
-		});
+		}
+	})(0);
 }
