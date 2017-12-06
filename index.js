@@ -42,6 +42,19 @@ app.post('/api/webhook',function(req,res){
 	});
 });
 
+// 2 apis: intents e parameters 
+app.post('/api/parameters', function(req,res){ 
+  var parameters = req.body; 
+  Parameter.collection.insert(parameters, function(err, docs){ 
+    if(err){ 
+      // error 
+    } 
+    else{ 
+      console.log(parameters.key + ' è stato inserito.'); 
+    }   
+  }) 
+});
+
 app.listen(port);
 console.log('Server listening on port: ' + port);
 
