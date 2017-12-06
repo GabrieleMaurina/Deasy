@@ -79,7 +79,7 @@ function response(speech, keys, res)
 	var paramKeys = [];
 	var paramValues = [];
 	
-	(function iterate(var i){
+	(function iterate(i){
 		if(i < keys.length){
 			paramKeys.push(keys[i].key);
 			if(utils[keys[i].value]){
