@@ -4,7 +4,6 @@ var mongoose = require('mongoose');
 var Intent = require('./intent');
 const path = require('path');
 var Parameter = require('./parameter');
-var async = require('async');
 var utils = require('./utils');
 
 // instantiate express
@@ -64,12 +63,9 @@ function getParameters(speech, callback)
 		keys[i] = keys[i].replace(/<|>/g,"");
 	}
 	
-	console.log(keys);
 	var query = Parameter.find();
 	query.where('key').in(keys);
 	query.exec(function(err, params){
-		
-		console.log(params);
 		callback(params);
 	});
 }
@@ -77,34 +73,31 @@ function getParameters(speech, callback)
 function response(speech, keys, res)
 {
 	var paramKeys = [];
-	var paramCB = [];
+	var paramValues = [];
 	
-		console.log(keys);
-	keys.forEach(function(param, index){
-		console.log(param);
-		paramKeys.push(param.key);
-		if(param.action)
-		{
-			paramCB.push(function(c){
-				utils[param.action](function(r){
-					c(null, r);
+	(function iterate(i){
+		if(i < keys.length){
+			paramKeys.push(keys[i].key);
+			if(keys[i].value in utils){
+				utils[keys[i].value](function(r){
+					paramValues.push(r);
+					iterate(i + 1);
 				});
-			});
+			}
+			else{
+				paramValues.push(keys[i].value);
+				iterate(i + 1);
+			}
 		}
-		else
-		{
-			paramCB.push(function(c){
-				c(null, param.value);
-			});
-		}
-	});
-	async.parallel(paramCB, function(err, values){
+		else{
 			res.setHeader('content-type', 'application/json');
-			for(var i = 0; i < values.length; i++)
+			console.log(paramKeys, paramValues);
+			for(j in paramValues)
 			{
-				var tmp = "<"+paramKeys[i]+">";
-				speech = speech.replace(new RegExp(tmp,'g'), values[i]);
+				var tmp = "<"+paramKeys[j]+">";
+				speech = speech.replace(new RegExp(tmp,'g'), paramValues[j]);
 			}
 			res.send(JSON.stringify({"speech":speech}));
-		});
+		}
+	})(0);
 }
