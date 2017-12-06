@@ -79,7 +79,8 @@ function response(speech, keys, res)
 	(function iterate(i){
 		if(i < keys.length){
 			paramKeys.push(keys[i].key);
-			if(utils[keys[i].value] != 'undefined'){
+			console.log(keys[i].value);
+			if(keys[i].value in utils){
 				utils[keys[i].value](function(r){
 					paramValues.push(r);
 					iterate(i + 1);
