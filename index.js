@@ -50,7 +50,9 @@ function getSpeech(intentKey, callback)
 	var query = Intent.find();
 	query.where('key').equals(intentKey);
 	query.exec(function(err, intents){
-		callback(intents[0].value);
+		if(intents.length > 0){
+			callback(intents[0].value);
+		}
 	});
 }
 
@@ -77,6 +79,7 @@ function response(speech, keys, res)
 	
 	(function iterate(i){
 		if(i < keys.length){
+			console.log(keys[i]);
 			paramKeys.push(keys[i].key);
 			if(keys[i].value in utils){
 				utils[keys[i].value](function(r){
@@ -90,8 +93,8 @@ function response(speech, keys, res)
 			}
 		}
 		else{
+			console.log(paramValues);
 			res.setHeader('content-type', 'application/json');
-			console.log(paramKeys, paramValues);
 			for(j in paramValues)
 			{
 				var tmp = "<"+paramKeys[j]+">";
