@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--
+Made by EnricoGdx 
+front end for an admin page that given username and password, shows the table from the database and allows to modify it
+-->
+<html>
+    <head>
+        <script type="text/javascript" src="admin_methods.js"></script>
+        <style>
+            table,th,td {
+                border : 1px solid black;
+                border-collapse: collapse;
+            }
+            th,td {
+                padding: 5px;
+            }
+        </style>
+        <title> Admin </title>
+    </head>
+
+
+    <body>
+
+        <label> username </label>
+        <input type="text" id="username" placeholder="username" required>
+
+        <label> password </label>
+        <input type="password" id="password" placeholder="password" required>
+
+        <button onclick="authentication()">Confirm</button>
+
+        <br>
+        <P id="not_accepted" style="visibility: hidden;" > username or password wrong </p>
+        <br>
+
+        <div id="modify_table" style="visibility: hidden;" > 
+            <form action=""> 
+                <select id="operation">
+                    <option value="">Select an operation:</option>
+                    <option value="remove">remove</option>
+                    <option value="modify">modify</option>
+                    <option value="add">add</option>
+                </select>
+            </form>
+
+            <label> name of the field</label>
+            <input type="text" id="field_name" placeholder="field_name" required>
+
+            <textarea id="answer" rows="6" cols="70"> 
+            </textarea>
+
+            <button onclick="modify()">Confirm</button>
+        </div>
+
+        <br>
+
+        <div id="tabella">
+
+        </div>
+
+    </body>
+    
+    
+</html>
