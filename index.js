@@ -50,7 +50,9 @@ function getSpeech(intentKey, callback)
 	var query = Intent.find();
 	query.where('key').equals(intentKey);
 	query.exec(function(err, intents){
-		callback(intents[0].value);
+		if(intents.length > 0){
+			callback(intents[0].value);
+		}
 	});
 }
 
