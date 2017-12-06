@@ -4,7 +4,6 @@ var mongoose = require('mongoose');
 var Intent = require('./intent');
 const path = require('path');
 var Parameter = require('./parameter');
-var async = require('async');
 var utils = require('./utils');
 
 // instantiate express
@@ -79,7 +78,6 @@ function response(speech, keys, res)
 	(function iterate(i){
 		if(i < keys.length){
 			paramKeys.push(keys[i].key);
-			console.log(keys[i].value);
 			if(keys[i].value in utils){
 				utils[keys[i].value](function(r){
 					paramValues.push(r);

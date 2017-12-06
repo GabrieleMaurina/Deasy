@@ -1,0 +1,62 @@
+[
+	{
+		"key": "Alloggio universitario",
+		"value": "L'Opera Universitaria mette a disposizione degli studenti fuori sede circa 1.500 posti alloggio, in residenze collettive o appartamenti. I principali requisiti per ottenere un posto alloggio sono stabiliti dai BANDI e riguardano: la condizione economica, la composizione del nucleo familiare e requisiti di merito (solo per studenti iscritti ad anni successivi al primo). I posti alloggio dell’Opera Universitaria sono situati in zone da cui è facile raggiungere i Dipartimenti, a piedi, in bicicletta o con mezzi pubblici (Trentino Trasporti). L’Opera Universitaria fornisce la biancheria da letto, gli asciugamani e le coperte solamente nello Studentato San Bartolameo, nel Collegio di Merito Bernardo Clesio e nell’Opera Barelli (Rovereto). L’attrezzatura da cucina (piatti, pentole, posate, ecc...) non è mai fornita. \nPer ulteriori informazioni consulatere lo Sportello Info Alloggi - 140 ,via della Malpensada, aperto dal lunedì al venerdì dalle 9.30 alle 12, mercoledì anche dalle 14 alle 16   o chiamare il  (+39) 0461.217450"
+	},
+	{
+		"key": "Borsa di studio",
+		"value": "Le borse di studio, il posto alloggio e gli esoneri dalle tasse per l'anno accademico 2017-18 sono assegnati in base a due diversi bandi :\n\nBando 1 - ISEE per matricole o studenti in trasferimento da altri atenei\nBando 2 - ICEF per studenti già immatricolati a Trento prima dell'a.a. 2017/2018 e che intendono iscriversi ad anni successivi al primo.\n\nper ulteriori informazione, consultare il sito:\n<scholarship-ann>"
+	},
+	{
+		"key": "Bus prossimo giù",
+		"value": "Il prossimo 5 che scende passa ai Valoni alle <nextDown>"
+	},
+	{
+		"key": "Erasmus",
+		"value": "L’Erasmus è un’opportunità di studio all’estero per lo studente, in collaborazione con un ateneo partner. Per accedere all’Erasmus occorre partecipare a un bando di selezione, e ha una durata variabile da 3 mesi a un anno. Si distingue in Erasmus+, Erasmus Mundus e Accordi bilaterali."
+	},
+	{
+		"key": "Help",
+		"value": "Ecco di cosa posso occuparmi:\n\nMensa\nTirocinio\nErasmus\nTasse universitarie\nBorsa di studio\nAlloggio universitario\nTesi\nOrari autobus"
+	},
+	{
+		"key": "Mensa menù",
+		"value": "qui puoi vedere il menù di questa settimana: <menu>"
+	},
+	{
+		"key": "Mensa orario",
+		"value": "Il servizio di ristorazione è disponibile da lunedì a venerdì. La  mensa è aperta dalle 11.45 alle 14.30  mentre il bar-caffetteria dalle 8 alle 18"
+	},
+	{
+		"key": "Mensa situazione",
+		"value": "Qui puoi vedere la situazione in mensa : <webcam>"
+	},
+	{
+		"key": "Mensa tipologie menù",
+		"value": "Puoi scegliere tra quattro differenti menù:  INTERO al costo di € 4,90,  RIDOTTO al costo di € 4,40,  SNACK al costo di € 3,10 e PASTO LESTO al costo di € 3,10.\n\nPer ulteriori informazioni, consulta il link: <menuTypes>"
+	},
+	{
+		"key": "Tasse",
+		"value": "Dall’anno accademico 2017-18 le tasse per l’iscrizione all’Università degli Studi di Trento per i cittadini UE sono determinate con un nuovo sistema di contribuzione basato sull’Indicatore della Situazione Economica Equivalente specifico per per prestazioni per il diritto allo studio universitario (ISEE università)."
+	},
+	{
+		"key": "Tesi",
+		"value": "Ogni facoltà ha  regole specifiche per il conseguimento  della laurea,  ti invito a consultare il seguente sito per sapere cosa fare nel tuo caso: <thesis>"
+	},
+	{
+		"key": "Tirocinio",
+		"value": "Il tirocinio formativo è un periodo di formazione professionale, svolto dallo studente all’interno del proprio percorso universitario, allo scopo di realizzare momenti di alternanza tra studio e lavoro e di agevolare le future scelte professionali.\nSi divide in tirocinio interno e tirocinio esterno. A quale sei interessato?"
+	},
+	{
+		"key": "Tirocinio esterno",
+		"value": "Il tirocinio esterno è un periodo di formazione atto a integrare il percorso universitario e a orientare le future scelte professionali dello studente, ma, a differenza del tirocinio interno, viene svolto all'interno di un ente esterno all'Università. Per l'attivazione è neccessario contattare l'ufficio Job Guidance."
+	},
+	{
+		"key": "Tirocinio interno",
+		"value": "Il tirocinio interno è un periodo di formazione atto a integrare il percorso universitario e a orientare le future scelte professionali dello studente, ma, a differenza del tirocinio esterno, viene svolto nell'ambito del Dipartimento di appartenenza o all'interno di un ente che collabora con il Dipartimento stesso. Per l'attivazione è necessario contattare il docente che svolgerà il ruolo di tutor."
+	},
+	{
+		"key": "Tirocinio requisiti",
+		"value": "Possono accedere al tirocinio gli studenti regolarmente iscritti al corso di laurea, che abbiano acquisito, salvo deroghe motivate, approvate dal Consiglio del Dipartimento, un numero minimo di crediti formativi:\n90 CFU per le Lauree triennali,\n30 CFU per le Lauree magistrali."
+	}
+]
