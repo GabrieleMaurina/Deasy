@@ -83,12 +83,12 @@ function response(speech, keys, res)
 			if(utils[keys[i].value]){
 				utils[keys[i].value](function(r){
 					paramValues.push(r);
-					iterate(i++);
+					iterate(i + 1);
 				});
 			}
 			else{
 				paramValues.push(keys[i].value);
-				iterate(i++);
+				iterate(i + 1);
 			}
 		}
 		else{
