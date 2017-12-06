@@ -64,12 +64,9 @@ function getParameters(speech, callback)
 		keys[i] = keys[i].replace(/<|>/g,"");
 	}
 	
-	console.log(keys);
 	var query = Parameter.find();
 	query.where('key').in(keys);
 	query.exec(function(err, params){
-		
-		console.log(params);
 		callback(params);
 	});
 }
@@ -80,6 +77,7 @@ function response(speech, keys, res)
 	var paramValues = [];
 	
 	(function iterate(i){
+		console.log(i);
 		if(i < keys.length){
 			paramKeys.push(keys[i].key);
 			if(utils[keys[i].value]){
