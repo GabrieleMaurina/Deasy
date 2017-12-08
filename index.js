@@ -22,7 +22,7 @@ mongoose.connect('mongodb://deasybot:deasybot@ds117156.mlab.com:17156/deasydb', 
     err => { console.error(`Error while connecting to DB: ${err.message}`); }
 );
 // set our port
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 80;
 
 app.use(express.static(path.join(__dirname, 'dist')));
 
@@ -31,6 +31,17 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
+app.get('/api/parameters', function(req,res){
+	Parameter.find({}, function (err, parameters) {
+        res.send(parameters);
+    });
+});
+
+app.get('/api/intents', function(req,res){
+	Intent.find({}, function (err, intents) {
+        res.send(intents);
+    });
+});
 
 app.post('/api/webhook',function(req,res){
 	var intentKey = req.body.result.metadata.intentName;
