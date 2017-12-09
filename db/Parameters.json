@@ -56,6 +56,14 @@
 		"value": "nextUp"
 	},
 	{
+		"key": "nextTrainUp",
+		"value": "nextTrainUp"
+	},
+	{
+		"key": "nextTrainDown",
+		"value": "nextTrainDown"
+	},
+	{
 		"key": "test",
 		"value": "test"
 	}
