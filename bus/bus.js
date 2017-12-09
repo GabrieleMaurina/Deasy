@@ -40,7 +40,7 @@ module.exports = {
 		})
 	},
 	nextTrainUp: function(callback) {
-		request.get(traindown, function(err, res, body) {
+		request.get(trainup, function(err, res, body) {
 			var time = '';
 			try {
 				time = JSON.parse(body).routes[0].legs[0].departure_time.text;
