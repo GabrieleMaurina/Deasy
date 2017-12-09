@@ -62,5 +62,13 @@
 	{
 		"key": "Tirocinio requisiti",
 		"value": "Possono accedere al tirocinio gli studenti regolarmente iscritti al corso di laurea, che abbiano acquisito, salvo deroghe motivate, approvate dal Consiglio del Dipartimento, un numero minimo di crediti formativi:\n90 CFU per le Lauree triennali,\n30 CFU per le Lauree magistrali."
+	},
+	{
+		"key":"train_down",
+		"value": "Il prossimo treno da Povo/Mesiano verso Pza Dante è alle <nextTrainDown>"
+	},
+	{
+		"key":"train_up",
+		"value": "Il prossimo treno da Pza Dante verso Povo/Mesiano è alle <nextTrainUp>"
 	}
 ]
