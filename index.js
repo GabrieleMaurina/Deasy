@@ -45,12 +45,52 @@ app.get('/api/intents', function(req,res){
 
 app.delete('/api/parameters', function(req,res){
 	var parameters = req.body;
-	Parameter.Where('key').In(parameters).Remove();
+	Parameter.where('key').in(parameters).remove().exec();
+	Parameter.find({}, function (err, parameters) {
+        res.send(parameters);
+    });
 });
 
 app.delete('/api/intents', function(req,res){
 	var intents = req.body;
-	Parameter.Where('key').In(intents).Remove();
+	Intent.where('key').in(intents).remove().exec();
+	Intent.find({}, function (err, intents) {
+        res.send(intents);
+    });
+});
+
+app.post('/api/intents', function(req,res){
+	var intents = req.body;
+	var updates = [];
+	for(i in intents)
+	{
+		var options = {
+			upsert: true
+		};
+		updates.push(Intent.findOneAndUpdate({key: intents[i].key},intents[i],options).exec());
+	}
+	Promise.all(updates).then(function(err){
+		Intent.find({}, function (err, newIntents) {
+			res.send(newIntents);
+		});
+	});
+});
+
+app.post('/api/parameters', function(req,res){
+	var parameters = req.body;
+	var updates = [];
+	for(i in parameters)
+	{
+		var options = {
+			upsert: true
+		};
+		updates.push(Parameter.findOneAndUpdate({key: parameters[i].key},parameters[i],options).exec());
+	}
+	Promise.all(updates).then(function(err){
+		Parameter.find({}, function (err, newParams) {
+			res.send(newParams);
+		});
+	});
 });
 
 app.post('/api/webhook',function(req,res){
@@ -61,19 +101,6 @@ app.post('/api/webhook',function(req,res){
 			response(speech, keys, res);
 		});
 	});
-});
-
-// 2 apis: intents e parameters 
-app.post('/api/parameters', function(req,res){ 
-  var parameters = req.body; 
-  Parameter.collection.insert(parameters, function(err, docs){ 
-    if(err){ 
-      // error 
-    } 
-    else{ 
-      console.log(parameters.key + ' è stato inserito.'); 
-    }   
-  }) 
 });
 
 app.listen(port);
