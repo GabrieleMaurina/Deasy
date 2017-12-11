@@ -43,6 +43,16 @@ app.get('/api/intents', function(req,res){
     });
 });
 
+app.delete('/api/parameters', function(req,res){
+	var parameters = req.body;
+	Parameter.Where('key').In(parameters).Remove();
+});
+
+app.delete('/api/intents', function(req,res){
+	var intents = req.body;
+	Parameter.Where('key').In(intents).Remove();
+});
+
 app.post('/api/webhook',function(req,res){
 	var intentKey = req.body.result.metadata.intentName;
 	console.log(intentKey);
