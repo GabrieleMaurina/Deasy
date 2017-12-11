@@ -1,8 +1,9 @@
 var http = require('http');
 var assert = require('assert');
 var chai = require('chai');
-var server = require('./server.js');
+//var server = require('./server.js');
 var request = require('supertest');
+//var test = require('../index.js');
 
 describe('Empty Array', function() {
   it('should start empty', function() {
@@ -19,10 +20,11 @@ describe('Array Test', function(){
   });
 })
 
+
 describe('Testing Server', function () {
   var server;
   beforeEach(function () {
-    server = require('./server');
+    server = require('../index.js');
   });
   afterEach(function () {
     server.close();
