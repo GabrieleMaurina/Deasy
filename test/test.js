@@ -1,36 +1,42 @@
 var http = require('http');
 var assert = require('assert');
-
+var chai = require('chai');
 var server = require('./server.js');
+var request = require('supertest');
 
-describe('HTTP Server Test', function() {
-	// The function passed to before() is called before running the test cases.
-	before(function() {
-		server.listen(8080);
-	});
+var assert = chai.assert;
 
-	// The function passed to after() is called after running the test cases.
-	after(function() {
-		server.close();
-	});
+describe('Empty Array', function() {
+  it('should start empty', function() {
+    var arr = [];
 
-	describe('/', function() {
-		it('should be Hello, World!', function(done) {
-			http.get('http://127.0.0.1:8080', function(response) {
-				// Assert the status code.
-				assert.equal(response.statusCode, 200);
+    assert.equal(arr.length, 0);
+  });
+});
 
-                                var body = '';
-				response.on('data', function(d) {
-					body += d;
-				});
-				response.on('end', function() {
-					// Let's wait until we read the response, and then assert the body
-					// is 'Hello, World!'.
-					assert.equal(body, 'Hello, World!');
-					done();
-				});
-			});
-		});
-	});
+
+describe('Array Test', function(){
+  it('should return an array', function(){
+    assert(Array.isArray('a,b,c'.split(',')));
+  });
+})
+
+describe('Testing Server', function () {
+  var server;
+  beforeEach(function () {
+    server = require('./server');
+  });
+  afterEach(function () {
+    server.close();
+  });
+  it('responds to /', function testSlash(done) {
+  request(server)
+    .get('/')
+    .expect(200, done);
+  });
+  it('404 everything else', function testPath(done) {
+    request(server)
+      .get('/foo/bar')
+      .expect(404, done);
+  });
 });

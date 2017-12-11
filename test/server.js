@@ -1,18 +1,10 @@
-var http = require('http');
-
-// This is just an example HTTP server. Use your own application here.
-var server = http.createServer(function(req, res) {
-	res.writeHead(200);
-	res.end('Hello, World!');
+var express = require('express');
+var app = express();
+app.get('/', function (req, res) {
+  res.status(200).send('ok');
 });
-
-// listen strats the server on the given port.
-exports.listen = function(port) {
-	console.log('Listening on: ' + port);
-	server.listen(port);
-};
-
-// close destroys the server.
-exports.close = function() {
-	server.close();
-};
+var server = app.listen(8080, function () {
+  var port = server.address().port;
+  console.log('Example app listening at port %s', port);
+});
+module.exports = server;
