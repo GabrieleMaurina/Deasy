@@ -4,8 +4,6 @@ var chai = require('chai');
 var server = require('./server.js');
 var request = require('supertest');
 
-var assert = chai.assert;
-
 describe('Empty Array', function() {
   it('should start empty', function() {
     var arr = [];
