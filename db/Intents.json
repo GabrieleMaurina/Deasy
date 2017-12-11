@@ -16,8 +16,20 @@
 		"value": "Il prossimo 5 parte dalla stazione alle <nextUp>"
 	},
 	{
+		"key": "Default Fallback",
+		"value": "Non ho capito la domanda, potresti ripetere?"
+	},
+	{
 		"key": "Erasmus",
 		"value": "L’Erasmus è un’opportunità di studio all’estero per lo studente, in collaborazione con un ateneo partner. Per accedere all’Erasmus occorre partecipare a un bando di selezione, e ha una durata variabile da 3 mesi a un anno. Si distingue in Erasmus+, Erasmus Mundus e Accordi bilaterali."
+	},
+	{
+		"key": "Erasmus Plus",
+		"value": "L'Erasmus+ è un programma UE a favore dei giovani, dell'educazione e dello sport. Per maggiori info consultare il sito <erasmusPlus>"
+	},
+	{
+		"key":"Erasmus Mundus",
+		"value": "L'Erasmus Mundus permette agli studenti di frequentare un corso in un ambiente internazionale di eccellenza, studiando in due o più Paesi UE e non-UE. Più info a sito <erasmusMundus>"
 	},
 	{
 		"key": "Help",
@@ -62,5 +74,13 @@
 	{
 		"key": "Tirocinio requisiti",
 		"value": "Possono accedere al tirocinio gli studenti regolarmente iscritti al corso di laurea, che abbiano acquisito, salvo deroghe motivate, approvate dal Consiglio del Dipartimento, un numero minimo di crediti formativi:\n90 CFU per le Lauree triennali,\n30 CFU per le Lauree magistrali."
+	},
+	{
+		"key": "train_down",
+		"value": "Il prossimo treno da Povo/Mesiano verso Pza Dante è alle <nextTrainDown>"
+	},
+	{
+		"key": "train_up",
+		"value": "Il prossimo treno da Pza Dante verso Povo/Mesiano è alle <nextTrainUp>"
 	}
 ]
