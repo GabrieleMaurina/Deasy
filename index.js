@@ -127,7 +127,7 @@ function getSpeech(intentKey, callback)
 
 function getParameters(speech, callback)
 {
-	var wildcard = "<[a-zA-Z0-9-_]*>";
+	var wildcard = /<[a-zA-Z0-9-_]*>/g;
 	var keys = [...new Set(speech.match(wildcard))];
 	
 	for(var i=0;i<keys.length;i++){
