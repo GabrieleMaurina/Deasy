@@ -155,8 +155,8 @@ function modify_parameters() {
             answer.push({key: parameters_name, value: file_in_json});
         }
     }
-    console.log("{" + answer + "}");
-    json_answer = JSON.stringify("{" + answer + "}");
+    console.log( answer );
+    json_answer = JSON.stringify(answer);
     xhttp.send(json_answer);
 }
 
