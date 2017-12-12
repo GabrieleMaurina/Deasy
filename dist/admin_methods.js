@@ -106,8 +106,8 @@ function modify_parameters() {
     var fileInput = document.getElementById('fileInput');
     var file = fileInput.files[0];
     var file_in_json = "", string = "";
-    var reader = new FileReader();
-    var answer = [];
+    var reader = new FileReader(), error = false;
+    var answer = new Object();   //[];
 
     var file_exists = (fileInput.files.length > 0);
     if (file_exists) {
@@ -115,33 +115,42 @@ function modify_parameters() {
         file_in_json = JSON.stringify(string);
     }
 
-    xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("tabella").innerHTML = xhttp.responseText;
-        }
-    };
-
-    if (operation === "remove") {
-        xhttp.open("DELETE", urlpar, true);
-        answer.push(parameters_name);
-
-    } else {
-        if (file_exists && parameters_name !== "") {
-            document.getElementById("errore_parameters").style.visibility = "visible";
-        } else if (parameters_name !== "") {
-            document.getElementById("errore_parameters").style.visibility = "hidden";
-            xhttp.open("POST", urlpar, true);
-            answer.push({key: parameters_name, value: parameters_answer});
-        } else {
-            document.getElementById("errore_parameters").style.visibility = "hidden";
-            xhttp.open("POST", urlpar, true);
-            answer.push({key: parameters_name, value: file_in_json});
-        }
+    if (file_exists && parameters_name !== "" && operation !== "remove") {
+        document.getElementById("errore_parameters").style.visibility = "visible";
+        error = true;
     }
-    console.log(answer);
-    json_answer = JSON.stringify("{" + answer + "}");
-    xhttp.send(json_answer);
+
+    if (!error) {
+        xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("tabella").innerHTML = xhttp.responseText;
+            }
+        };
+
+        if (operation === "remove") {
+            xhttp.open("DELETE", urlpar, true);
+            answer.push(parameters_name);
+
+        } else {
+            if (parameters_name !== "") {
+                document.getElementById("errore_parameters").style.visibility = "hidden";
+                xhttp.open("POST", urlpar, true);
+                answer.key = parameters_name;
+                answer.value = parameters_answer;
+             //   answer.push({key: parameters_name, value: parameters_answer});
+            } else {
+                document.getElementById("errore_parameters").style.visibility = "hidden";
+                xhttp.open("POST", urlpar, true);
+                answer.key = parameters_name;
+                answer.value = file_in_json;
+             //   answer.push({key: parameters_name, value: file_in_json});
+            }
+        }
+        console.log(answer);
+        json_answer = JSON.stringify(answer);
+        xhttp.send(json_answer);
+    }
 }
 
 
