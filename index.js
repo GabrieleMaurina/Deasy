@@ -32,25 +32,21 @@ app.get('/', (req, res) => {
 });
 
 function returnParameters(res){
-	Parameter.find({}, function (err, parameters) {
-		console.log(parameters);
-		for(i in parameters){
-			delete parameters[i]._id;
-			delete parameters[i]._v;
+	Parameter.find({}, function (err, res) {
+		var parameters = [];
+		for(i in res){
+			parametes.push({key : res[i].key, value : res[i].value})
 		}
-		console.log(parameters);
         res.send(parameters);
     });
 }
 
 function returnIntents(res){
-	Intent.find({}, function (err, intents) {
-		console.log(intents);
-		for(i in intents){
-			delete intents[i]._id;
-			delete intents[i]._v;
+	Intent.find({}, function (err, res) {
+		var intents = [];
+		for(i in res){
+			intents.push({key : res[i].key, value : res[i].value})
 		}
-		console.log(intents);
         res.send(intents);
     });
 }
