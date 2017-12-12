@@ -34,8 +34,8 @@ app.get('/', (req, res) => {
 function returnParameters(res){
 	Parameter.find({}, function (err, parameters) {
 		for(i in parameters){
-			delete parameters[i]._id;
-			delete parameters[i]._v;
+			delete parameters[i]['_id'];;
+			delete parameters[i]['_v'];;
 		}
         res.send(parameters);
     });
@@ -44,8 +44,8 @@ function returnParameters(res){
 function returnIntents(res){
 	Intent.find({}, function (err, intents) {
 		for(i in intents){
-			delete intents[i]._id;
-			delete intents[i]._v;
+			delete intents[i]['_id'];
+			delete intents[i]['_v'];
 		}
         res.send(intents);
     });
