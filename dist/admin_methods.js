@@ -108,7 +108,7 @@ function modify_parameters() {
     var reader = new FileReader();
     var answer = [];
 
-    var file_exists = (document.getElementById("uploadBox").files.length > 0);
+    var file_exists = (fileInput.files.length > 0);
     if (file_exists) {
         string = reader.readAsText(file);
         file_in_json = JSON.stringify(string);
