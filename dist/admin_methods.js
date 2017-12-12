@@ -14,18 +14,19 @@ function authentication() {
         admin = true;
         document.getElementById("not_accepted").style.visibility = "hidden";
         document.getElementById("parameters_or_intent").style.visibility = "visible";
-    } else
+    } else {
         admin = false;
         document.getElementById("not_accepted").style.visibility = "visible";
         document.getElementById("modify_intent").style.visibility = "hidden";
         document.getElementById("modify_parameters").style.visibility = "hidden";
         document.getElementById("parameters_or_intent").style.visibility = "hidden";
+    }
 }
 
 function intent_or_parameters() {
 
     var choice = document.getElementById("parameters_or_intent").value;
-    
+
     if (choice === "parameters") {
         document.getElementById("modify_parameters").style.visibility = "visible";
         document.getElementById("modify_intent").style.visibility = "hidden";
@@ -101,12 +102,12 @@ function modify_parameters() {
     var operation = document.getElementById("operation_parameters").value;
     var parameters_name = document.getElementById("parameters_name").value;
     var parameters_answer = document.getElementById("parameters_function").value;
-    var answer = []; 
+    var answer = [];
 
     xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-           table(urlpar);
+            table(urlpar);
         }
     };
 
@@ -119,13 +120,13 @@ function modify_parameters() {
             document.getElementById("errore_parameters").style.visibility = "hidden";
             xhttp.open("POST", urlpar, true);
             answer.push({key: parameters_name, value: parameters_answer});
-        } 
+        }
     }
 
     xhttp.setRequestHeader("Content-type", "Application/json");
     json_answer = JSON.stringify(answer);
     xhttp.send(json_answer);
-    
+
 }
 
 
