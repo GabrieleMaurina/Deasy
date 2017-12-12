@@ -136,15 +136,16 @@ function modify_parameters() {
             if (parameters_name !== "") {
                 document.getElementById("errore_parameters").style.visibility = "hidden";
                 xhttp.open("POST", urlpar, true);
-                answer.push({key: parameters_name, value: parameters_answer});
+                answer.push({"key" : parameters_name, "value" : parameters_answer});
             } else {
                 document.getElementById("errore_parameters").style.visibility = "hidden";
                 xhttp.open("POST", urlpar, true);
-                answer.push({key: parameters_name, value: file_in_json});
+                answer.push({"key" : + parameters_name, "value" : file_in_json});
             }
         }
         console.log(answer);
         json_answer = JSON.stringify(answer);
+        console.log(json_answer);
         xhttp.send(json_answer);
     }
 }
