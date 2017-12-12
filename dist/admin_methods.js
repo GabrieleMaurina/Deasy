@@ -16,6 +16,7 @@ function authentication() {
         document.getElementById("parameters_or_intent").style.visibility = "visible";
     } else
         document.getElementById("not_accepted").style.visibility = "visible";
+        admin = false;
 }
 /* admin = true;
  document.getElementById("parameters_or_intent").style.visibility = "visible";*/
