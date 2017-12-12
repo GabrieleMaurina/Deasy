@@ -127,8 +127,8 @@ function modify_parameters() {
             if (this.readyState == 4 && this.status == 200) {
                 elements = JSON.parse(xhttp.responseText);
                 var table = "";
-                for(x in elements){
-                    console.log(x.value);
+                for(i = 0; i < elements.length; i++){
+                    console.log(elements[i].toString());
                     table += "<tr><td>";
                 }
                 //document.getElementById("tabella").innerHTML = ;
