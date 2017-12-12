@@ -17,9 +17,10 @@ front end for an admin page that given username and password, shows the table fr
         <input type="text" id="username" placeholder="username" required>
 
         <label> password </label>
-        <input type="password" id="password" placeholder="password" required>
+        <input type="password" id="password" placeholder="password" required
+         onkeydown = "if (event.keyCode == 13) document.getElementById('authentication').click()" >
 
-        <button onclick="authentication()">Confirm</button>
+        <button id= "authentication" onclick="authentication()">Confirm</button>
 
         <br>
         <P id="not_accepted" style="visibility: hidden;" > username or password wrong </p>
@@ -40,8 +41,7 @@ front end for an admin page that given username and password, shows the table fr
                 <select id="operation_parameters">
                     <option value="">Select an operation:</option>
                     <option value="remove">remove</option>
-                    <option value="modify">modify</option>
-                    <option value="add">add</option>
+                    <option value="modify">modify or add</option>
                 </select>
             </form>
 
@@ -65,8 +65,7 @@ front end for an admin page that given username and password, shows the table fr
                 <select id="operation_intent">
                     <option value="">Select an operation:</option>
                     <option value="remove">remove</option>
-                    <option value="modify">modify</option>
-                    <option value="add">add</option>
+                    <option value="modify">modify or add</option>
                 </select>
             </form>
 
