@@ -25,6 +25,7 @@ function authentication() {
 function intent_or_parameters() {
 
     var choice = document.getElementById("parameters_or_intent").value;
+    var elements;
     if (choice === "parameters") {
         document.getElementById("modify_parameters").style.visibility = "visible";
         document.getElementById("modify_intent").style.visibility = "hidden";
@@ -125,7 +126,13 @@ function modify_parameters() {
         xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("tabella").innerHTML = xhttp.responseText;
+                elements = JSON.parse(xhttp.responseText);
+                var table = "";
+                for(x in elements){
+                    console.log(x);
+                    table += "<tr><td>";
+                }
+                //document.getElementById("tabella").innerHTML = ;
             }
         };
 
