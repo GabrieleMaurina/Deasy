@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
 });
 
 function returnParameters(res){
-	Parameter.find({}, function (err, table) {
+	Parameter.find({}).sort('key').exec(function (err, table) {
 		var parameters = [];
 		for(i in table){
 			parameters.push({key : table[i].key, value : table[i].value})
@@ -42,7 +42,7 @@ function returnParameters(res){
 }
 
 function returnIntents(res){
-	Intent.find({}, function (err, table) {
+	Intent.find({}).sort('key').exec(function (err, table) {
 		var intents = [];
 		for(i in table){
 			intents.push({key : table[i].key, value : table[i].value})
@@ -104,7 +104,7 @@ app.post('/api/intents', function(req, res){
 app.post('/api/webhook',function(req,res){
 	var intentKey = req.body.result.metadata.intentName;
 	console.log(intentKey);
-	getSpeech(intentKey, res, function(speech){
+	getSpeech(intentKey, function(speech){
 		getParameters(speech, function(keys){
 			response(speech, keys, res);
 		});
@@ -121,9 +121,6 @@ function getSpeech(intentKey, res, callback)
 	query.exec(function(err, intents){
 		if(intents.length > 0){
 			callback(intents[0].value);
-		}
-		else{
-			res.send();
 		}
 	});
 }
