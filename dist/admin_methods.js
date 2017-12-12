@@ -138,6 +138,7 @@ function modify_parameters() {
 
         if (operation === "remove") {
             xhttp.open("DELETE", urlpar, true);
+            xhttp.setRequestHeader("Content-type","Application/json");
             answer.push(parameters_name);
 
         } else {
