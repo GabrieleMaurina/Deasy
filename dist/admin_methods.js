@@ -4,7 +4,7 @@
 
 
 
-var xhttp, urlpar = "https://deasybot.herokuapp.com/api/parameters", urlint = "https://deasybot.herokuapp.com/api/intents", admin = false;
+var xhttp, urlpar = "https://deasybot.herokuapp.com/api/parameters", urlint = "https://deasybot.herokuapp.com/api/intents", admin = false, txt = "";
 
 function authentication() {
     var usrnm = document.getElementById("username").value;
