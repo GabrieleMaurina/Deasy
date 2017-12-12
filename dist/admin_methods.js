@@ -130,15 +130,17 @@ function modify_parameters() {
         if (file_exists && parameters_name !== "") {
             document.getElementById("errore_parameters").style.visibility = "visible";
         } else if (parameters_name !== "") {
+            document.getElementById("errore_parameters").style.visibility = "hidden";
             xhttp.open("POST", urlpar, true);
             answer.push({key: parameters_name, value: parameters_answer});
         } else {
+            document.getElementById("errore_parameters").style.visibility = "hidden";
             xhttp.open("POST", urlpar, true);
             answer.push({key: parameters_name, value: file_in_json});
         }
     }
     console.log(answer);
-    json_answer = JSON.stringify(answer);
+    json_answer = JSON.stringify("{" + answer + "}");
     xhttp.send(json_answer);
 }
 
