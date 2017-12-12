@@ -10,16 +10,16 @@ function authentication() {
     var usrnm = document.getElementById("username").value;
     var psswrd = document.getElementById("password").value;
 
-    if (usrnm === "easy_name" && psswrd === "easy_password") {
+    if (usrnm == "easy_name" && psswrd == "easy_password") {
         admin = true;
         document.getElementById("not_accepted").style.visibility = "hidden";
         document.getElementById("parameters_or_intent").style.visibility = "visible";
     } else
         document.getElementById("not_accepted").style.visibility = "visible";
-        /*document.getElementById("parameters_or_intent").style.visibility = "hidden";
+        document.getElementById("parameters_or_intent").style.visibility = "hidden";
         document.getElementById("modify_intent").style.visibility = "hidden";
         document.getElementById("modify_parameters").style.visibility = "hidden";
-        document.getElementById("tabella").innerHTML = "";*/
+        document.getElementById("tabella").innerHTML = "";
         admin = false;
 }
 
