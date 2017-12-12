@@ -128,10 +128,10 @@ function modify_parameters() {
                 elements = JSON.parse(xhttp.responseText);
                 var table = "";
                 for(i = 0; i < elements.length; i++){
-                    console.log(elements[i].key);
-                    table += "<tr><td>";
+                    console.log();
+                    table += "<tr><td>"+elements[i].key+"</td><td>"+elements[i].value+"</td></tr>";
                 }
-                //document.getElementById("tabella").innerHTML = ;
+                document.getElementById("tabella").innerHTML = table;
             }
         };
 
