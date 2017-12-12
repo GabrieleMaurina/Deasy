@@ -6,6 +6,7 @@ front end for an admin page that given username and password, shows the table fr
 <html>
     <head>
         <script type="text/javascript" src="admin_methods.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
         <title> Admin </title>
     </head>
 
@@ -39,6 +40,7 @@ front end for an admin page that given username and password, shows the table fr
                 <select id="operation_parameters">
                     <option value="">Select an operation:</option>
                     <option value="remove">remove</option>
+                    <option value="modify">modify</option>
                     <option value="add">add</option>
                 </select>
             </form>
@@ -51,7 +53,7 @@ front end for an admin page that given username and password, shows the table fr
 
             <br>
             
-            <input id="fileInput" type="file">
+        <!--    <input id="fileInput" type="file">   da corregere il bug  -->
             
             <P id="errore_parameters" style="visibility: hidden;" > You can only write a content or upload a file </p>
 
@@ -78,9 +80,9 @@ front end for an admin page that given username and password, shows the table fr
         </div>
 
         <br>
-
+        
         <div id="tabella">
-
+            
         </div>
 
     </body>
