@@ -76,7 +76,7 @@ function modify_intent() {
 
         } else {
             xhttp.open("POST", urlint, true);
-            answer.push({key: intent_name, value: intent_answer});
+            answer.push({"key" : intent_name, "value" : intent_answer});
         }
         json_answer = JSON.stringify(answer);
         xhttp.send(json_answer);
@@ -131,10 +131,10 @@ function modify_parameters() {
             document.getElementById("errore_parameters").style.visibility = "visible";
         } else if (parameters_name !== "") {
             xhttp.open("POST", urlpar, true);
-            answer.push({key: parameters_name, value: parameters_answer});
+            answer.push({"key" : parameters_name, "value" : parameters_answer});
         } else {
             xhttp.open("POST", urlpar, true);
-            answer.push({key: parameters_name, value: file_in_json});
+            answer.push({"key" : parameters_name, "value" : file_in_json});
         }
     }
     console.log(answer);
