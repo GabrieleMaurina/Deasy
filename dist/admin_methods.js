@@ -136,11 +136,13 @@ function modify_parameters() {
             if (parameters_name !== "") {
                 document.getElementById("errore_parameters").style.visibility = "hidden";
                 xhttp.open("POST", urlpar, true);
-                answer.push({"key" : parameters_name, "value" : parameters_answer});
+                xhttp.setRequestHeader("Content-type","Application/json")
+                answer.push({key : parameters_name, value : parameters_answer});
             } else {
                 document.getElementById("errore_parameters").style.visibility = "hidden";
                 xhttp.open("POST", urlpar, true);
-                answer.push({"key" : + parameters_name, "value" : file_in_json});
+                xhttp.setRequestHeader("Content-type","Application/json")
+                answer.push({key : + parameters_name, value : file_in_json});
             }
         }
         console.log(answer);
