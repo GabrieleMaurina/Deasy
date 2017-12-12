@@ -112,9 +112,9 @@ function modify_parameters() {
         if (parameters_name !== "")
             document.getElementById("errore_parameters").style.visibility = "visible";
         else {
-            xhttp.open("POST", urlpar, true);
+            xhttp.open("POST", urlpar, true); console.log("entered in json request");
             xhttp.setRequestHeader("Content-type", "Application/json");
-            json_answer = JSON.stringify(newArr);
+            json_answer = JSON.stringify(newArr); console.log(json_answer);
             xhttp.send(newArr);
         }
 
@@ -141,28 +141,28 @@ function loadFile() {
     var input, file, fr, worked = false;
 
     if (typeof window.FileReader !== 'function') {
-        alert("The file API isn't supported on this browser yet.");
+        console.log("The file API isn't supported on this browser yet.");
         return;
     }
 
     input = document.getElementById('fileinput');
     if (!input) {
-        alert("Um, couldn't find the fileinput element.");
+        console.log("Um, couldn't find the fileinput element.");
     } else if (!input.files) {
-        alert("This browser doesn't seem to support the `files` property of file inputs.");
+        console.log("This browser doesn't seem to support the `files` property of file inputs.");
     } else if (!input.files[0]) {
-        alert("Please select a file before clicking 'Load'");
+        console.log("Please select a file before clicking 'Load'");
     } else {
         file = input.files[0];
         fr = new FileReader();
-        fr.onload = receivedText;
-        fr.readAsText(file);
+        fr.onload = receivedText;console.log(fr.onload); console.log(fr);
+        fr.readAsText(file); console.log(fr.readAsText(file));
         worked = true;
     }
 
     function receivedText(e) {
-        lines = e.target.result;
-        newArr = JSON.parse(lines);
+        lines = e.target.result; console.log(e.target.result);
+        newArr = JSON.parse(lines); console.log(newArr);
     }
 
     return (worked);
