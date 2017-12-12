@@ -114,7 +114,7 @@ function modify_parameters() {
         else {
             xhttp.open("POST", urlpar, true); console.log("entered in json request");
             xhttp.setRequestHeader("Content-type", "Application/json");
-            json_answer = JSON.stringify(newArr); console.log(json_answer);
+            json_answer = JSON.stringify(newArr); console.log(json_answer); console.log(newArr);
             xhttp.send(newArr);
         }
 
