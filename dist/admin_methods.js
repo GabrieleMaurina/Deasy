@@ -136,13 +136,7 @@ function modify_parameters() {
     xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            myObj = JSON.parse(this.responseText);
-            txt += "<table border='1'>"
-            for (x in myObj) {
-                txt += "<tr><td>" + "key:   " + myObj[x].key + "     value:    " + myObj[x].value + "</td></tr>";
-            }
-            txt += "</table>"
-            document.getElementById("tabella").value = txt;
+             document.getElementById("tabella").value = this.responseText;
         }
     };
 
