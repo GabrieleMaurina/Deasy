@@ -104,7 +104,7 @@ app.post('/api/intents', function(req, res){
 app.post('/api/webhook',function(req,res){
 	var intentKey = req.body.result.metadata.intentName;
 	console.log(intentKey);
-	getSpeech(intentKey, function(speech){
+	getSpeech(intentKey, res, function(speech){
 		getParameters(speech, function(keys){
 			response(speech, keys, res);
 		});
@@ -114,13 +114,16 @@ app.post('/api/webhook',function(req,res){
 app.listen(port);
 console.log('Server listening on port: ' + port);
 
-function getSpeech(intentKey, callback)
+function getSpeech(intentKey, res, callback)
 {
 	var query = Intent.find();
 	query.where('key').equals(intentKey);
 	query.exec(function(err, intents){
 		if(intents.length > 0){
 			callback(intents[0].value);
+		}
+		else{
+			res.send();
 		}
 	});
 }
