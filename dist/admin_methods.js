@@ -12,6 +12,7 @@ function authentication() {
 
     if (usrnm === "admin_deasy" && psswrd === "123") {
         admin = true;
+        document.getElementById("not_accepted").style.visibility = "hidden";
         document.getElementById("parameters_or_intent").style.visibility = "visible";
     } else
         document.getElementById("not_accepted").style.visibility = "visible";
@@ -126,9 +127,9 @@ function modify_parameters() {
         answer.push(parameters_name);
 
     } else {
-        if (file_exists && parameters_answer !== "") {
+        if (file_exists && parameters_name !== "") {
             document.getElementById("errore_parameters").style.visibility = "visible";
-        } else if (parameters_answer !== "") {
+        } else if (parameters_name !== "") {
             xhttp.open("POST", urlpar, true);
             answer.push({key: parameters_name, value: parameters_answer});
         } else {
