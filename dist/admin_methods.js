@@ -51,6 +51,7 @@ function table_intent() {
                     txt += "<tr><td>" + "key:   " + myObj[x].key + "     value:    " + myObj[x].value + "</td></tr>";
                 }
                 txt += "</table>"
+                document.getElementById("tabella").value = txt;
             }
         };
         xhttp.open("GET", urlint, true);
@@ -77,6 +78,7 @@ function modify_intent() {
                     txt += "<tr><td>" + "key:   " + myObj[x].key + "     value:    " + myObj[x].value + "</td></tr>";
                 }
                 txt += "</table>"
+                document.getElementById("tabella").value = txt;
             }
         };
         if (operation === "remove") {
@@ -105,6 +107,7 @@ function table_parameters() {
                     txt += "<tr><td>" + "key:   " + myObj[x].key + "     value:    " + myObj[x].value + "</td></tr>";
                 }
                 txt += "</table>"
+                document.getElementById("tabella").value = txt;
             }
         };
         xhttp.open("GET", urlpar, true);
@@ -139,6 +142,7 @@ function modify_parameters() {
                 txt += "<tr><td>" + "key:   " + myObj[x].key + "     value:    " + myObj[x].value + "</td></tr>";
             }
             txt += "</table>"
+            document.getElementById("tabella").value = txt;
         }
     };
 
