@@ -20,6 +20,7 @@ function authentication() {
         document.getElementById("modify_intent").style.visibility = "hidden";
         document.getElementById("modify_parameters").style.visibility = "hidden";
         document.getElementById("parameters_or_intent").style.visibility = "hidden";
+        document.getElementById("tabella").innerHTML = "";
     }
 }
 
