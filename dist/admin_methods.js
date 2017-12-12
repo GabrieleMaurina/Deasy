@@ -107,7 +107,7 @@ function modify_parameters() {
     var file = fileInput.files[0];
     var file_in_json = "", string = "";
     var reader = new FileReader(), error = false;
-    var answer = new Object();   //[];
+    var answer = [];
 
     var file_exists = (fileInput.files.length > 0);
     if (file_exists) {
@@ -136,15 +136,11 @@ function modify_parameters() {
             if (parameters_name !== "") {
                 document.getElementById("errore_parameters").style.visibility = "hidden";
                 xhttp.open("POST", urlpar, true);
-                answer.key = parameters_name;
-                answer.value = parameters_answer;
-             //   answer.push({key: parameters_name, value: parameters_answer});
+                answer.push({key: parameters_name, value: parameters_answer});
             } else {
                 document.getElementById("errore_parameters").style.visibility = "hidden";
                 xhttp.open("POST", urlpar, true);
-                answer.key = parameters_name;
-                answer.value = file_in_json;
-             //   answer.push({key: parameters_name, value: file_in_json});
+                answer.push({key: parameters_name, value: file_in_json});
             }
         }
         console.log(answer);
