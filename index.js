@@ -114,7 +114,7 @@ app.post('/api/webhook',function(req,res){
 app.listen(port);
 console.log('Server listening on port: ' + port);
 
-function getSpeech(intentKey, res, callback)
+function getSpeech(intentKey, callback)
 {
 	var query = Intent.find();
 	query.where('key').equals(intentKey);
