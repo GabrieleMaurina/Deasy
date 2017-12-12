@@ -35,7 +35,7 @@ function returnParameters(res){
 	Parameter.find({}, function (err, res) {
 		var parameters = [];
 		for(i in res){
-			parametes.push({key : res[i].key, value : res[i].value})
+			parameters.push({key : res[i].key, value : res[i].value})
 		}
         res.send(parameters);
     });
