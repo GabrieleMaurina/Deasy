@@ -5,6 +5,7 @@
 
 
 var xhttp, urlpar = "https://deasybot.herokuapp.com/api/parameters", urlint = "https://deasybot.herokuapp.com/api/intents", admin = false;
+var lines, newArr;
 
 function authentication() {
     var usrnm = document.getElementById("username").value;
@@ -22,7 +23,7 @@ function authentication() {
 function intent_or_parameters() {
 
     var choice = document.getElementById("parameters_or_intent").value;
-    
+
     if (choice === "parameters") {
         document.getElementById("modify_parameters").style.visibility = "visible";
         document.getElementById("modify_intent").style.visibility = "hidden";
@@ -98,52 +99,73 @@ function modify_parameters() {
     var operation = document.getElementById("operation_parameters").value;
     var parameters_name = document.getElementById("parameters_name").value;
     var parameters_answer = document.getElementById("parameters_function").value;
-    var answer = []; 
-     /*var error = false;
-     var fileInput = document.getElementById('fileInput');     da corregere il bug
-     var file = fileInput.files[0];
-     var file_in_json = "", string = "";
-     var reader = new FileReader();
-     
-     var file_exists = (fileInput.files.length > 0);
-     if (file_exists) {
-     string = reader.readAsText(file);
-     file_in_json = JSON.stringify(string);
-     }
-     
-     if (file_exists && parameters_name !== "" && operation !== "remove") {
-     document.getElementById("errore_parameters").style.visibility = "visible";
-     error = true;
-     }*/
+    var answer = [], file_loaded = false;
 
-    // if (!error) {
     xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-           table(urlpar);
+            table(urlpar);
         }
     };
 
-    if (operation === "remove") {
-        xhttp.open("DELETE", urlpar, true);
-        answer.push(parameters_name);
+    if (loadFile) {
+        if (parameters_name !== "")
+            document.getElementById("errore_parameters").style.visibility = "visible";
+        else {
+            xhttp.open("POST", urlpar, true);
+            xhttp.setRequestHeader("Content-type", "Application/json");
+            json_answer = JSON.stringify(newArr);
+            xhttp.send(newArr);
+        }
 
     } else {
-        if (parameters_name !== "") {
-            document.getElementById("errore_parameters").style.visibility = "hidden";
-            xhttp.open("POST", urlpar, true);
-            answer.push({key: parameters_name, value: parameters_answer});
-        } /*else {
-         document.getElementById("errore_parameters").style.visibility = "hidden";
-         xhttp.open("POST", urlpar, true);
-         answer.push({key: +parameters_name, value: file_in_json});
-         }*/
+        if (operation === "remove") {
+            xhttp.open("DELETE", urlpar, true);
+            answer.push(parameters_name);
+
+        } else {
+            if (parameters_name !== "") {
+                document.getElementById("errore_parameters").style.visibility = "hidden";
+                xhttp.open("POST", urlpar, true);
+                answer.push({key: parameters_name, value: parameters_answer});
+            }
+        }
+
+        xhttp.setRequestHeader("Content-type", "Application/json");
+        json_answer = JSON.stringify(answer);
+        xhttp.send(json_answer);
+    }
+}
+
+function loadFile() {
+    var input, file, fr, worked = false;
+
+    if (typeof window.FileReader !== 'function') {
+        alert("The file API isn't supported on this browser yet.");
+        return;
     }
 
-    xhttp.setRequestHeader("Content-type", "Application/json");
-    json_answer = JSON.stringify(answer);
-    xhttp.send(json_answer);
-    // }
+    input = document.getElementById('fileinput');
+    if (!input) {
+        alert("Um, couldn't find the fileinput element.");
+    } else if (!input.files) {
+        alert("This browser doesn't seem to support the `files` property of file inputs.");
+    } else if (!input.files[0]) {
+        alert("Please select a file before clicking 'Load'");
+    } else {
+        file = input.files[0];
+        fr = new FileReader();
+        fr.onload = receivedText;
+        fr.readAsText(file);
+        worked = true;
+    }
+
+    function receivedText(e) {
+        lines = e.target.result;
+        newArr = JSON.parse(lines);
+    }
+
+    return (worked);
 }
 
 
