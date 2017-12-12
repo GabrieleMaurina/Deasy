@@ -15,8 +15,11 @@ function authentication() {
         document.getElementById("not_accepted").style.visibility = "hidden";
         document.getElementById("parameters_or_intent").style.visibility = "visible";
     } else
+        admin = false;
         document.getElementById("not_accepted").style.visibility = "visible";
-
+        document.getElementById("modify_intent").style.visibility = "hidden";
+        document.getElementById("modify_parameters").style.visibility = "hidden";
+        document.getElementById("parameters_or_intent").style.visibility = "hidden";
 }
 
 function intent_or_parameters() {
