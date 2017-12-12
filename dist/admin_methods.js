@@ -104,8 +104,8 @@ function modify_parameters() {
     var parameters_name = document.getElementById("parameters_name").value;
     var parameters_answer = document.getElementById("parameters_function").value;
     var fileInput = document.getElementById('fileInput');
-    console.log(fileInput.toString());
     var file = fileInput.files[0];
+        console.log(file.toString());
     var file_in_json = "", string = "";
     var reader = new FileReader(), error = false;
     var answer = [];
