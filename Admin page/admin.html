@@ -12,13 +12,14 @@ front end for an admin page that given username and password, shows the table fr
 
 
     <body>
+        <form>
+            <label> username </label>
+            <input type="text" id="username" placeholder="username" required>
 
-        <label> username </label>
-        <input type="text" id="username" placeholder="username" required>
-
-        <label> password </label>
-        <input type="password" id="password" placeholder="password" required
-         onkeydown = "if (event.keyCode == 13) document.getElementById('authentication').click()" >
+            <label> password </label>
+            <input type="password" id="password" placeholder="password" required
+                   onkeydown = "if (event.keyCode == 13)document.getElementById('authentication').click()" >
+        </form>
 
         <button id= "authentication" onclick="authentication()">Confirm</button>
 
@@ -52,9 +53,9 @@ front end for an admin page that given username and password, shows the table fr
             </textarea>
 
             <br>
-            
+
             <input id="fileinput" type="file"> 
-            
+
             <P id="errore_parameters" style="visibility: hidden;" > You can only write a content or upload a file </p>
 
             <button onclick="modify_parameters()">Confirm</button>
@@ -79,9 +80,9 @@ front end for an admin page that given username and password, shows the table fr
         </div>
 
         <br>
-        
+
         <div id="tabella">
-            
+
         </div>
 
     </body>

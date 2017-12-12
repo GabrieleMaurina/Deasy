@@ -5,7 +5,6 @@
 
 
 var xhttp, urlpar = "https://deasybot.herokuapp.com/api/parameters", urlint = "https://deasybot.herokuapp.com/api/intents", admin = false;
-var lines, newArr;
 
 function authentication() {
     var usrnm = document.getElementById("username").value;
@@ -23,7 +22,7 @@ function authentication() {
 function intent_or_parameters() {
 
     var choice = document.getElementById("parameters_or_intent").value;
-
+    
     if (choice === "parameters") {
         document.getElementById("modify_parameters").style.visibility = "visible";
         document.getElementById("modify_intent").style.visibility = "hidden";
@@ -99,73 +98,33 @@ function modify_parameters() {
     var operation = document.getElementById("operation_parameters").value;
     var parameters_name = document.getElementById("parameters_name").value;
     var parameters_answer = document.getElementById("parameters_function").value;
-    var answer = [], file_loaded = false;
+    var answer = []; 
 
     xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            table(urlpar);
+           table(urlpar);
         }
     };
 
-    if (loadFile) {
-        if (parameters_name !== "")
-            document.getElementById("errore_parameters").style.visibility = "visible";
-        else {
-            xhttp.open("POST", urlpar, true); console.log("entered in json request");
-            xhttp.setRequestHeader("Content-type", "Application/json");
-            json_answer = JSON.stringify(newArr); console.log(json_answer); console.log(newArr);
-            xhttp.send(newArr);
-        }
+    if (operation === "remove") {
+        xhttp.open("DELETE", urlpar, true);
+        answer.push(parameters_name);
 
     } else {
-        if (operation === "remove") {
-            xhttp.open("DELETE", urlpar, true);
-            answer.push(parameters_name);
-
-        } else {
-            if (parameters_name !== "") {
-                document.getElementById("errore_parameters").style.visibility = "hidden";
-                xhttp.open("POST", urlpar, true);
-                answer.push({key: parameters_name, value: parameters_answer});
-            }
-        }
-
-        xhttp.setRequestHeader("Content-type", "Application/json");
-        json_answer = JSON.stringify(answer);
-        xhttp.send(json_answer);
+        if (parameters_name !== "") {
+            document.getElementById("errore_parameters").style.visibility = "hidden";
+            xhttp.open("POST", urlpar, true);
+            answer.push({key: parameters_name, value: parameters_answer});
+        } 
     }
+
+    xhttp.setRequestHeader("Content-type", "Application/json");
+    json_answer = JSON.stringify(answer);
+    xhttp.send(json_answer);
+    
 }
 
-function loadFile() {
-    var input, file, fr, worked = false;
 
-    if (typeof window.FileReader !== 'function') {
-        console.log("The file API isn't supported on this browser yet.");
-        return;
-    }
-
-    input = document.getElementById('fileinput');
-    if (!input) {
-        console.log("Um, couldn't find the fileinput element.");
-    } else if (!input.files) {
-        console.log("This browser doesn't seem to support the `files` property of file inputs.");
-    } else if (!input.files[0]) {
-        console.log("Please select a file before clicking 'Load'");
-    } else {
-        file = input.files[0];
-        fr = new FileReader();
-        fr.onload = receivedText;console.log(fr.onload); console.log(fr);
-        fr.readAsText(file); console.log(fr.readAsText(file));
-        worked = true;
-    }
-
-    function receivedText(e) {
-        lines = e.target.result; console.log(e.target.result);
-        newArr = JSON.parse(lines); console.log(newArr);
-    }
-
-    return (worked);
-}
 
 
