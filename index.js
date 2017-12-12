@@ -32,20 +32,20 @@ app.get('/', (req, res) => {
 });
 
 function returnParameters(res){
-	Parameter.find({}, function (err, res) {
+	Parameter.find({}, function (err, table) {
 		var parameters = [];
-		for(i in res){
-			parameters.push({key : res[i].key, value : res[i].value})
+		for(i in table){
+			parameters.push({key : table[i].key, value : table[i].value})
 		}
         res.send(parameters);
     });
 }
 
 function returnIntents(res){
-	Intent.find({}, function (err, res) {
+	Intent.find({}, function (err, table) {
 		var intents = [];
-		for(i in res){
-			intents.push({key : res[i].key, value : res[i].value})
+		for(i in table){
+			intents.push({key : table[i].key, value : table[i].value})
 		}
         res.send(intents);
     });
