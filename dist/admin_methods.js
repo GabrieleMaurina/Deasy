@@ -45,7 +45,12 @@ function table_intent() {
         xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("tabella").innerHTML = xhttp.responseText;
+                myObj = JSON.parse(this.responseText);
+                txt += "<table border='1'>"
+                for (x in myObj) {
+                    txt += "<tr><td>" + "key:   " + myObj[x].key + "     value:    " + myObj[x].value + "</td></tr>";
+                }
+                txt += "</table>"
             }
         };
         xhttp.open("GET", urlint, true);
@@ -66,7 +71,12 @@ function modify_intent() {
         xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("tabella").innerHTML = xhttp.responseText;
+                myObj = JSON.parse(this.responseText);
+                txt += "<table border='1'>"
+                for (x in myObj) {
+                    txt += "<tr><td>" + "key:   " + myObj[x].key + "     value:    " + myObj[x].value + "</td></tr>";
+                }
+                txt += "</table>"
             }
         };
         if (operation === "remove") {
@@ -76,7 +86,7 @@ function modify_intent() {
 
         } else {
             xhttp.open("POST", urlint, true);
-            answer.push({"key" : intent_name, "value" : intent_answer});
+            answer.push({"key": intent_name, "value": intent_answer});
         }
         json_answer = JSON.stringify(answer);
         xhttp.send(json_answer);
@@ -89,7 +99,12 @@ function table_parameters() {
         xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("tabella").innerHTML = xhttp.responseText;
+                myObj = JSON.parse(this.responseText);
+                txt += "<table border='1'>"
+                for (x in myObj) {
+                    txt += "<tr><td>" + "key:   " + myObj[x].key + "     value:    " + myObj[x].value + "</td></tr>";
+                }
+                txt += "</table>"
             }
         };
         xhttp.open("GET", urlpar, true);
@@ -118,7 +133,12 @@ function modify_parameters() {
     xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("tabella").innerHTML = xhttp.responseText;
+            myObj = JSON.parse(this.responseText);
+            txt += "<table border='1'>"
+            for (x in myObj) {
+                txt += "<tr><td>" + "key:   " + myObj[x].key + "     value:    " + myObj[x].value + "</td></tr>";
+            }
+            txt += "</table>"
         }
     };
 
@@ -131,14 +151,14 @@ function modify_parameters() {
             document.getElementById("errore_parameters").style.visibility = "visible";
         } else if (parameters_name !== "") {
             xhttp.open("POST", urlpar, true);
-            answer.push({"key" : parameters_name, "value" : parameters_answer});
+            answer.push({key: parameters_name, value: parameters_answer});
         } else {
             xhttp.open("POST", urlpar, true);
-            answer.push({"key" : parameters_name, "value" : file_in_json});
+            answer.push({key: parameters_name, value: file_in_json});
         }
     }
-    console.log(answer);
-    json_answer = JSON.stringify(answer);
+    console.log("{" + answer + "}");
+    json_answer = JSON.stringify("{" + answer + "}");
     xhttp.send(json_answer);
 }
 
