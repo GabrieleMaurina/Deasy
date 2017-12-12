@@ -126,11 +126,12 @@ function modify_parameters() {
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 elements = JSON.parse(xhttp.responseText);
-                var table = "";
+                var table = "<table>";
                 for(i = 0; i < elements.length; i++){
                     console.log();
                     table += "<tr><td>"+elements[i].key+"</td><td>"+elements[i].value+"</td></tr>";
                 }
+                table += "</table>";
                 document.getElementById("tabella").innerHTML = table;
             }
         };
