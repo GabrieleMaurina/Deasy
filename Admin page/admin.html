@@ -25,40 +25,42 @@ front end for an admin page that given username and password, shows the table fr
         <br>
 
         <form action=""> 
-            <select id="tag_or_field" onChange="field_or_tag()" style="visibility: hidden;">
-                <option value="">Select tag or field:</option>
-                <option value="tag">tag</option>
-                <option value="field">field</option>
+            <select id="parameters_or_intent" onChange="intent_or_parameters()" style="visibility: hidden;">
+                <option value="">Select parameters or intent:</option>
+                <option value="parameters">parameters</option>
+                <option value="intent">intent</option>
             </select>
         </form>
 
         <br>
 
-        <div id="modify_tag" style="visibility: hidden;" > 
+        <div id="modify_parameters" style="visibility: hidden;" > 
             <form action=""> 
-                <select id="operation_tag">
+                <select id="operation_parameters">
                     <option value="">Select an operation:</option>
                     <option value="remove">remove</option>
                     <option value="add">add</option>
                 </select>
             </form>
 
-            <label> tag</label>
-            <input type="text" id="tag_name" placeholder="tag" required>
+            <label> parameters</label>
+            <input type="text" id="parameters_name" placeholder="parameters" required>
 
-            <textarea id="tag_function" rows="6" cols="70"> 
+            <textarea id="parameters_function" rows="6" cols="70"> 
             </textarea>
 
             <br>
             
             <input id="fileInput" type="file">
+            
+            <P id="errore_parameters" style="visibility: hidden;" > You can only write a content or upload a file </p>
 
-            <button onclick="modify_tag()">Confirm</button>
+            <button onclick="modify_parameters()">Confirm</button>
         </div>
 
-        <div id="modify_field" style="visibility: hidden;" > 
+        <div id="modify_intent" style="visibility: hidden;" > 
             <form action=""> 
-                <select id="operation_field">
+                <select id="operation_intent">
                     <option value="">Select an operation:</option>
                     <option value="remove">remove</option>
                     <option value="modify">modify</option>
@@ -66,13 +68,13 @@ front end for an admin page that given username and password, shows the table fr
                 </select>
             </form>
 
-            <label> name of the field</label>
-            <input type="text" id="field_name" placeholder="field_name" required>
+            <label> name of the intent</label>
+            <input type="text" id="intent_name" placeholder="intent_name" required>
 
-            <textarea id="field_answer" rows="6" cols="70"> 
+            <textarea id="intent_answer" rows="6" cols="70"> 
             </textarea>
 
-            <button onclick="modify_field()">Confirm</button>
+            <button onclick="modify_intent()">Confirm</button>
         </div>
 
         <br>
