@@ -48,7 +48,7 @@ function table_intent() {
             }
         };
         xhttp.open("GET", urlint, true);
-        
+
         xhttp.send()
     } else
         document.getElementById("not_accepted").style.visibility = "visible";
@@ -70,7 +70,7 @@ function modify_intent() {
         };
         if (operation === "remove") {
             xhttp.open("DELETE", urlint, true);
-            
+
             answer.push(intent_name);
 
         } else {
@@ -108,8 +108,11 @@ function modify_parameters() {
     var reader = new FileReader();
     var answer = [];
 
-    string = reader.readAsText(file);
-    file_in_json = JSON.stringify(string);
+    var file_exists = (document.getElementById("uploadBox").files.length > 0);
+    if (file_exists) {
+        string = reader.readAsText(file);
+        file_in_json = JSON.stringify(string);
+    }
 
     xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
@@ -123,7 +126,7 @@ function modify_parameters() {
         answer.push(parameters_name);
 
     } else {
-        if (string !== "" && parameters_answer !== "") {
+        if (file_exists && parameters_answer !== "") {
             document.getElementById("errore_parameters").style.visibility = "visible";
         } else if (parameters_answer !== "") {
             xhttp.open("POST", urlpar, true);
@@ -133,6 +136,7 @@ function modify_parameters() {
             answer.push({key: parameters_name, value: file_in_json});
         }
     }
+    console.log(answer);
     json_answer = JSON.stringify(answer);
     xhttp.send(json_answer);
 }
