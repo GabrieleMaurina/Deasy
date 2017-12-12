@@ -16,6 +16,10 @@ function authentication() {
         document.getElementById("parameters_or_intent").style.visibility = "visible";
     } else
         document.getElementById("not_accepted").style.visibility = "visible";
+        document.getElementById("parameters_or_intent").style.visibility = "hidden";
+        document.getElementById("modify_intent").style.visibility = "hidden";
+        document.getElementById("modify_parameters").style.visibility = "hidden";
+        document.getElementById("tabella").innerHTML = "";
         admin = false;
 }
 /* admin = true;
