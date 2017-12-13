@@ -5,6 +5,7 @@ var Intent = require('./intent');
 const path = require('path');
 var Parameter = require('./parameter');
 var utils = require('./utils');
+var request = require('request');
 
 // instantiate express
 var app = express();
@@ -29,10 +30,6 @@ app.use(express.static(path.join(__dirname, 'dist')));
 // Catch all other routes and return the index file
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist/index.html'));
-});
-
-app.get('/admin', (req, res) => {
-  res.sendFile(path.join(__dirname, 'Admin page/admin.html'));
 });
 
 function returnParameters(res){
@@ -71,8 +68,37 @@ app.delete('/api/parameters', function(req, res){
 
 app.delete('/api/intents', function(req, res){
 	var intents = req.body;
-	Intent.where('key').in(intents).remove().exec();
-	returnIntents(res);
+	var fetchUpdates = [];
+	Intent.find({}).sort('key').exec(function (err, table) {
+		var oldIntents = [];
+		for(i in table){
+			oldIntents.push(table[i]);
+		}
+		for(i in intents)
+		{
+			var current = oldIntents.find(function(x){return x.key == intents[i];});
+			if(current != undefined)
+			{
+				fetchUpdates.push(new Promise(function(resolve,reject){wrapper(current,function(cachedIntent){
+				console.log('https://api.dialogflow.com/v1/intents/'+cachedIntent.id+'?v=20150910');
+				request.delete({
+				headers: {'content-type':'application/json',
+								'Authorization': 'Bearer 7426f105132342d8b8c5a3b418c2be3d'},
+					url:'https://api.dialogflow.com/v1/intents/'+cachedIntent.id+'?v=20150910'
+					}, function(error, response, body){
+					  if(!error)
+						{
+							resolve("");
+						}
+					})
+					})}));
+			}
+		}
+		Promise.all(fetchUpdates).then((resolve,err) => {
+			Intent.where('key').in(intents).remove().exec();
+			returnIntents(res);
+		});
+	})
 });
 
 app.post('/api/parameters', function(req, res){
@@ -90,19 +116,131 @@ app.post('/api/parameters', function(req, res){
 	});
 });
 
+function wrapper(index, callback)
+{
+	callback(index);
+}
+
 app.post('/api/intents', function(req, res){
-	var intents = req.body;
-	var updates = [];
-	for(i in intents)
-	{
-		var options = {
-			upsert: true
-		};
-		updates.push(Intent.findOneAndUpdate({key: intents[i].key},intents[i],options).exec());
-	}
-	Promise.all(updates).then(function(err){
-		returnIntents(res);
-	});
+	var newIntents = req.body;
+	var DialogUpdates = [];
+	Intent.find({}).sort('key').exec(function (err, table) {
+		var oldIntents = [];
+		for(i in table){
+			oldIntents.push(table[i]);
+		}
+		for(i in newIntents)
+		{
+			var intent = oldIntents.find(function(x){return x.key == newIntents[i].key;});
+			if(intent != undefined)
+			{
+				console.log("trovato " + newIntents[i].key);
+				var questions = []
+				for(q in newIntents[i].questions){
+					questions.push({
+						count: 0,
+						data: [
+						{
+						  text: newIntents[i].questions[q]
+						}
+						]}
+						);
+				}
+				
+				var json_obj = JSON.stringify({
+				  id:intent.id,
+				  name: newIntents[i].key,
+				  priority: 500000,
+				  responses: [],
+				  userSays: questions,
+				  webhookForSlotFilling: false,
+				  webhookUsed: true
+				});
+				var tmpIntent ={
+							id: intent.id,
+							key:newIntents[i].key,
+							value:newIntents[i].value
+						}
+				DialogUpdates.push(new Promise(function(resolve,reject){wrapper(tmpIntent,function(cachedIntent){request.put({
+					headers: {'content-type':'application/json',
+								'Authorization': 'Bearer 7426f105132342d8b8c5a3b418c2be3d'},
+					url:'https://api.dialogflow.com/v1/intents/'+cachedIntent.id+'?v=20150910',
+					body:json_obj
+					}, function(error, response, body){
+					  //console.log(cachedIntent);
+					  //console.log(body);
+					  if(!error)
+						{
+							var options = {
+								upsert: true
+							};
+							Intent.findOneAndUpdate({key: cachedIntent.key},cachedIntent,options).exec(function(){
+								resolve("");
+							});
+						}
+					});
+				})}));
+				console.log(json_obj);
+			}
+			else
+			{
+				//console.log("no " + newIntents[i].key);
+				var questions = []
+				for(q in newIntents[i].questions){
+					questions.push({
+						count: 0,
+						data: [
+						{
+						  text: newIntents[i].questions[q]
+						}
+						]}
+						);
+				}
+				
+				var json_obj = JSON.stringify({
+				  name: newIntents[i].key,
+				  priority: 500000,
+				  responses: [],
+				  userSays: questions,
+				  webhookForSlotFilling: false,
+				  webhookUsed: true
+				});
+				DialogUpdates.push(new Promise(function(resolve,reject){
+					wrapper(newIntents[i], function(cachedIntent){
+					console.log("DF",cachedIntent.key);
+					request.post({
+						headers: {'content-type':'application/json',
+									'Authorization': 'Bearer 7426f105132342d8b8c5a3b418c2be3d'},
+						url:'https://api.dialogflow.com/v1/intents?v=20150910',
+						body:json_obj
+					}, function(error, response, body){
+						if(!error)
+						{
+							var options = {
+								upsert: true
+							};
+							var tmpIntent ={
+								id: JSON.parse(body).id,
+								key:cachedIntent.key,
+								value:cachedIntent.value
+							}
+							//DBUpdates.push(Intent.findOneAndUpdate({key: tmpIntent.key},tmpIntent,options).exec());
+							Intent.findOneAndUpdate({key: tmpIntent.key},tmpIntent,options).exec(function(){
+								//console.log("DB", tmpIntent.key);
+								resolve("");
+							});
+						}
+					});
+				})}));
+				//console.log(JSON.stringify(json_obj));
+			}
+		}
+		return Promise.all(DialogUpdates).then(()=>{
+			returnIntents(res);
+		});
+		
+    });
+	
 });
 
 app.post('/api/webhook',function(req,res){
@@ -118,7 +256,7 @@ app.post('/api/webhook',function(req,res){
 app.listen(port);
 console.log('Server listening on port: ' + port);
 
-function getSpeech(intentKey, callback)
+function getSpeech(intentKey, res, callback)
 {
 	var query = Intent.find();
 	query.where('key').equals(intentKey);
@@ -131,7 +269,7 @@ function getSpeech(intentKey, callback)
 
 function getParameters(speech, callback)
 {
-	var wildcard = /<[a-zA-Z0-9-_]*>/g;
+	var wildcard = "<[a-zA-Z0-9-_]*>";
 	var keys = [...new Set(speech.match(wildcard))];
 	
 	for(var i=0;i<keys.length;i++){
