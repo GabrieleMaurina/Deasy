@@ -1,0 +1,118 @@
+FORMAT: 1A
+
+# Deasybot
+
+DeasyBot is a chat bot which answers to the most common questions made by the disi department students in Trento
+This API is used to build the answers and create/delete/update them.
+
+# Group DBManipulation
+
+Resources related to Creating, Deleting, Updating questions and answers.
+
+## DB Intent Manipulation [/api/intents]
+
+### List answers [GET]
+list all the answers 
+
++ Response 200 (application/json)
+{
+	[{"key":"Alloggio universitario","value":"L'Opera Universitaria mette a disposizione degli studenti fuori sede circa 1.500 posti alloggio, in residenze collettive o appartamenti. I principali requisiti per ottenere un posto alloggio sono stabiliti dai BANDI e riguardano: la condizione economica, la composizione del nucleo familiare e requisiti di merito (solo per studenti iscritti ad anni successivi al primo). I posti alloggio dell’Opera Universitaria sono situati in zone da cui è facile raggiungere i Dipartimenti, a piedi, in bicicletta o con mezzi pubblici (Trentino Trasporti). L’Opera Universitaria fornisce la biancheria da letto, gli asciugamani e le coperte solamente nello Studentato San Bartolameo, nel Collegio di Merito Bernardo Clesio e nell’Opera Barelli (Rovereto). L’attrezzatura da cucina (piatti, pentole, posate, ecc...) non è mai fornita. \nPer ulteriori informazioni consulatere lo Sportello Info Alloggi - 140 ,via della Malpensada, aperto dal lunedì al venerdì dalle 9.30 alle 12, mercoledì anche dalle 14 alle 16   o chiamare il  (+39) 0461.217450"},{"key":"Bilateral","value":"Un accordo bilaterale prevede la realizzazione di obiettivi comuni tra i quali, ad esempio, periodi di mobilità per frequenza dei corsi. UniTn ha accordi attivi con atenei di quasi tutto il mondo, maggiori info al link <bilateral>"},{"key":"Borsa di studio","value":"Le borse di studio, il posto alloggio e gli esoneri dalle tasse per l'anno accademico 2017-18 sono assegnati in base a due diversi bandi :\n\nBando 1 - ISEE per matricole o studenti in trasferimento da altri atenei\nBando 2 - ICEF per studenti già immatricolati a Trento prima dell'a.a. 2017/2018 e che intendono iscriversi ad anni successivi al primo.\n\nper ulteriori informazione, consultare i siti:\n<scholarship-ann>\n<scholarship>"},{"key":"Bus prossimo giù","value":"Il prossimo 5 che scende passa ai Valoni alle <nextDown>"},{"key":"Bus prossimo su","value":"Il prossimo 5 parte dalla stazione alle <nextUp>"},{"key":"Erasmus","value":"L’Erasmus è un’opportunità di studio all’estero per lo studente, in collaborazione con un ateneo partner. Per accedere all’Erasmus occorre partecipare a un bando di selezione, e ha una durata variabile da 3 mesi a un anno. Si distingue in Erasmus+, Erasmus Mundus e Accordi bilaterali. Per maggiori info consultare:\n<international>\n<bilateral>"},{"key":"Erasmus Mundus","value":"L'Erasmus Mundus permette agli studenti di frequentare un corso in un ambiente internazionale di eccellenza, studiando in due o più Paesi UE e non-UE. Più info sul sito <erasmusMundus>"},{"key":"Erasmus Plus","value":"L'Erasmus+ è un programma UE a favore dei giovani, dell'educazione e dello sport. Per maggiori info consultare il sito <erasmusPlus>"},{"key":"Help","value":"Ecco di cosa posso occuparmi:\n\nMensa\nTirocinio\nErasmus\nTasse universitarie\nBorsa di studio\nAlloggio universitario\nTesi\nOrari autobus"},{"key":"Mensa menù","value":"qui puoi vedere il menù di questa settimana: <menu>"},{"key":"Mensa orario","value":"Il servizio di ristorazione è disponibile da lunedì a venerdì. La  mensa è aperta dalle 11.45 alle 14.30  mentre il bar-caffetteria dalle 8 alle 18"},{"key":"Mensa situazione","value":"Qui puoi vedere la situazione in mensa : <webcam>"},{"key":"Mensa tipologie menù","value":"Puoi scegliere tra quattro differenti menù:  INTERO al costo di € 4,90,  RIDOTTO al costo di € 4,40,  SNACK al costo di € 3,10 e PASTO LESTO al costo di € 3,10.\n\nPer ulteriori informazioni, consulta il link: <menuTypes>"},{"key":"Tasse","value":"Dall’anno accademico 2017-18 le tasse per l’iscrizione all’Università degli Studi di Trento per i cittadini UE sono determinate con un nuovo sistema di contribuzione basato sull’Indicatore della Situazione Economica Equivalente specifico per per prestazioni per il diritto allo studio universitario (ISEE università).\nPer maggiori informazione puoi consultare il sito <taxes>"},{"key":"Tesi","value":"Ogni facoltà ha  regole specifiche per il conseguimento  della laurea,  ti invito a consultare il seguente sito per sapere cosa fare nel tuo caso: <thesis>"},{"key":"Tirocinio","value":"Il tirocinio formativo è un periodo di formazione professionale, svolto dallo studente all’interno del proprio percorso universitario, allo scopo di realizzare momenti di alternanza tra studio e lavoro e di agevolare le future scelte professionali.\nSi divide in tirocinio interno e tirocinio esterno. A quale sei interessato?\nPer maggiori informazione puoi consultare il sito <internship>"},{"key":"Tirocinio esterno","value":"Il tirocinio esterno è un periodo di formazione atto a integrare il percorso universitario e a orientare le future scelte professionali dello studente, ma, a differenza del tirocinio interno, viene svolto all'interno di un ente esterno all'Università. Per l'attivazione è neccessario contattare l'ufficio Job Guidance."},{"key":"Tirocinio interno","value":"Il tirocinio interno è un periodo di formazione atto a integrare il percorso universitario e a orientare le future scelte professionali dello studente, ma, a differenza del tirocinio esterno, viene svolto nell'ambito del Dipartimento di appartenenza o all'interno di un ente che collabora con il Dipartimento stesso. Per l'attivazione è necessario contattare il docente che svolgerà il ruolo di tutor."},{"key":"Tirocinio requisiti","value":"Possono accedere al tirocinio gli studenti regolarmente iscritti al corso di laurea, che abbiano acquisito, salvo deroghe motivate, approvate dal Consiglio del Dipartimento, un numero minimo di crediti formativi:\n90 CFU per le Lauree triennali,\n30 CFU per le Lauree magistrali."},{"key":"Tosse","value":"cough cough"},{"key":"train_down","value":"Il prossimo treno da Povo/Mesiano verso Pza Dante è alle <nextTrainDown>"},{"key":"train_up","value":"Il prossimo treno da Pza Dante verso Povo/Mesiano è alle <nextTrainUp>"}]
+}
+
+### Delete answers [DELETE]
+The question is also deleted from the bot on DialogFlow
+
++ Response 204
+
+### Update or Create answers [POST]
+If the question (and answer) already exists it will be updated otherwise it will be created.
+
++ Request (application/json)
+
+    + Body
+        {" key":"colloqui professori",
+          "value":"per i colloqui ogni professore segue una propria agenda e non c'è un metodo univoco per prenotarli"
+          } 
+
++ response 200 (application/json)
+{
+	[{"key":"Alloggio universitario","value":"L'Opera Universitaria mette a disposizione degli studenti fuori sede circa 1.500 posti alloggio, in residenze collettive o appartamenti. I principali requisiti per ottenere un posto alloggio sono stabiliti dai BANDI e riguardano: la condizione economica, la composizione del nucleo familiare e requisiti di merito (solo per studenti iscritti ad anni successivi al primo). I posti alloggio dell’Opera Universitaria sono situati in zone da cui è facile raggiungere i Dipartimenti, a piedi, in bicicletta o con mezzi pubblici (Trentino Trasporti). L’Opera Universitaria fornisce la biancheria da letto, gli asciugamani e le coperte solamente nello Studentato San Bartolameo, nel Collegio di Merito Bernardo Clesio e nell’Opera Barelli (Rovereto). L’attrezzatura da cucina (piatti, pentole, posate, ecc...) non è mai fornita. \nPer ulteriori informazioni consulatere lo Sportello Info Alloggi - 140 ,via della Malpensada, aperto dal lunedì al venerdì dalle 9.30 alle 12, mercoledì anche dalle 14 alle 16   o chiamare il  (+39) 0461.217450"},{"key":"Bilateral","value":"Un accordo bilaterale prevede la realizzazione di obiettivi comuni tra i quali, ad esempio, periodi di mobilità per frequenza dei corsi. UniTn ha accordi attivi con atenei di quasi tutto il mondo, maggiori info al link <bilateral>"},{"key":"Borsa di studio","value":"Le borse di studio, il posto alloggio e gli esoneri dalle tasse per l'anno accademico 2017-18 sono assegnati in base a due diversi bandi :\n\nBando 1 - ISEE per matricole o studenti in trasferimento da altri atenei\nBando 2 - ICEF per studenti già immatricolati a Trento prima dell'a.a. 2017/2018 e che intendono iscriversi ad anni successivi al primo.\n\nper ulteriori informazione, consultare i siti:\n<scholarship-ann>\n<scholarship>"},{"key":"Bus prossimo giù","value":"Il prossimo 5 che scende passa ai Valoni alle <nextDown>"},{"key":"Bus prossimo su","value":"Il prossimo 5 parte dalla stazione alle <nextUp>"},{"key":"Erasmus","value":"L’Erasmus è un’opportunità di studio all’estero per lo studente, in collaborazione con un ateneo partner. Per accedere all’Erasmus occorre partecipare a un bando di selezione, e ha una durata variabile da 3 mesi a un anno. Si distingue in Erasmus+, Erasmus Mundus e Accordi bilaterali. Per maggiori info consultare:\n<international>\n<bilateral>"},{"key":"Erasmus Mundus","value":"L'Erasmus Mundus permette agli studenti di frequentare un corso in un ambiente internazionale di eccellenza, studiando in due o più Paesi UE e non-UE. Più info sul sito <erasmusMundus>"},{"key":"Erasmus Plus","value":"L'Erasmus+ è un programma UE a favore dei giovani, dell'educazione e dello sport. Per maggiori info consultare il sito <erasmusPlus>"},{"key":"Help","value":"Ecco di cosa posso occuparmi:\n\nMensa\nTirocinio\nErasmus\nTasse universitarie\nBorsa di studio\nAlloggio universitario\nTesi\nOrari autobus"},{"key":"Mensa menù","value":"qui puoi vedere il menù di questa settimana: <menu>"},{"key":"Mensa orario","value":"Il servizio di ristorazione è disponibile da lunedì a venerdì. La  mensa è aperta dalle 11.45 alle 14.30  mentre il bar-caffetteria dalle 8 alle 18"},{"key":"Mensa situazione","value":"Qui puoi vedere la situazione in mensa : <webcam>"},{"key":"Mensa tipologie menù","value":"Puoi scegliere tra quattro differenti menù:  INTERO al costo di € 4,90,  RIDOTTO al costo di € 4,40,  SNACK al costo di € 3,10 e PASTO LESTO al costo di € 3,10.\n\nPer ulteriori informazioni, consulta il link: <menuTypes>"},{"key":"Tasse","value":"Dall’anno accademico 2017-18 le tasse per l’iscrizione all’Università degli Studi di Trento per i cittadini UE sono determinate con un nuovo sistema di contribuzione basato sull’Indicatore della Situazione Economica Equivalente specifico per per prestazioni per il diritto allo studio universitario (ISEE università).\nPer maggiori informazione puoi consultare il sito <taxes>"},{"key":"Tesi","value":"Ogni facoltà ha  regole specifiche per il conseguimento  della laurea,  ti invito a consultare il seguente sito per sapere cosa fare nel tuo caso: <thesis>"},{"key":"Tirocinio","value":"Il tirocinio formativo è un periodo di formazione professionale, svolto dallo studente all’interno del proprio percorso universitario, allo scopo di realizzare momenti di alternanza tra studio e lavoro e di agevolare le future scelte professionali.\nSi divide in tirocinio interno e tirocinio esterno. A quale sei interessato?\nPer maggiori informazione puoi consultare il sito <internship>"},{"key":"Tirocinio esterno","value":"Il tirocinio esterno è un periodo di formazione atto a integrare il percorso universitario e a orientare le future scelte professionali dello studente, ma, a differenza del tirocinio interno, viene svolto all'interno di un ente esterno all'Università. Per l'attivazione è neccessario contattare l'ufficio Job Guidance."},{"key":"Tirocinio interno","value":"Il tirocinio interno è un periodo di formazione atto a integrare il percorso universitario e a orientare le future scelte professionali dello studente, ma, a differenza del tirocinio esterno, viene svolto nell'ambito del Dipartimento di appartenenza o all'interno di un ente che collabora con il Dipartimento stesso. Per l'attivazione è necessario contattare il docente che svolgerà il ruolo di tutor."},{"key":"Tirocinio requisiti","value":"Possono accedere al tirocinio gli studenti regolarmente iscritti al corso di laurea, che abbiano acquisito, salvo deroghe motivate, approvate dal Consiglio del Dipartimento, un numero minimo di crediti formativi:\n90 CFU per le Lauree triennali,\n30 CFU per le Lauree magistrali."},{"key":"Tosse","value":"cough cough"},{"key":"train_down","value":"Il prossimo treno da Povo/Mesiano verso Pza Dante è alle <nextTrainDown>"},{"key":"train_up","value":"Il prossimo treno da Pza Dante verso Povo/Mesiano è alle <nextTrainUp>"} {" key":"colloqui professori","value":"per i colloqui ogni professore segue una propria agenda e non c'è un metodo univoco per prenotarli"
+          } ]
+
+
+
+## DB Parameters Manipulation [/api/parameters]
+
+### List parameters [GET]
+list all the paramaters
+
++ Response 200 (application/json)
+
+            { 
+            [{"key":"bilateral","value":"http://international.unitn.it/outgoing/bilateral-agreements"},{"key":"erasmusMundus","value":"http://international.unitn.it/outgoing/erasmus-mundus-programme"},{"key":"erasmusPlus","value":"http://international.unitn.it/outgoing/erasmus-study-and-traineeship"},{"key":"international","value":"http://international.unitn.it/outgoing/programmes"},{"key":"internship","value":"http://www.disi.unitn.it/it/internship"},{"key":"menu","value":"http://www.operauni.tn.it/servizi/ristorazione/menu"},{"key":"menuTypes","value":"http://www.operauni.tn.it/documents/10603/20928/Tipologie+men%C3%B9/5f5dadc2-00b4-4fa0-8bf1-588ff968919d?version=1.3"},{"key":"nextDown","value":"nextDown"},{"key":"nextTrainDown","value":"nextTrainDown"},{"key":"nextTrainUp","value":"nextTrainUp"},{"key":"nextUp","value":"nextUp"},{"key":"scholarship-ann","value":"http://www.operauni.tn.it/-/bandi-a-a-2017-2018"},{"key":"scolarship","value":"https://infostudenti.unitn.it/it/domanda-borsa-di-studio-e-posto-alloggio-2017-18"},{"key":"taxes","value":"http://infostudenti.unitn.it/it/tasse-anno-accademico-2017-18-cittadini-ue"},{"key":"thesis","value":"http://infostudenti.unitn.it/it/studiare-e-laurearsi/domanda-di-laurea-per-lauree-triennali"},{"key":"webcam","value":"http://www.operauni.tn.it/servizi/ristorazione/webcam"}] 
+            }
+
+### Delete parameters [DELETE]
+delete the parameters
+
++ Response 204
+
+
+### Update or Create parameters [POST]
+
++ Request 200(application/json)
+  + Body { "key":"ordinaMensa",
+             "value":"http://OperaUniversitaria/ordinaInMensa" }
+
++ Response 200 (application/json)
+
+            { 
+            [{"key":"bilateral","value":"http://international.unitn.it/outgoing/bilateral-agreements"},{"key":"erasmusMundus","value":"http://international.unitn.it/outgoing/erasmus-mundus-programme"},{"key":"erasmusPlus","value":"http://international.unitn.it/outgoing/erasmus-study-and-traineeship"},{"key":"international","value":"http://international.unitn.it/outgoing/programmes"},{"key":"internship","value":"http://www.disi.unitn.it/it/internship"},{"key":"menu","value":"http://www.operauni.tn.it/servizi/ristorazione/menu"},{"key":"menuTypes","value":"http://www.operauni.tn.it/documents/10603/20928/Tipologie+men%C3%B9/5f5dadc2-00b4-4fa0-8bf1-588ff968919d?version=1.3"},{"key":"nextDown","value":"nextDown"},{"key":"nextTrainDown","value":"nextTrainDown"},{"key":"nextTrainUp","value":"nextTrainUp"},{"key":"nextUp","value":"nextUp"},{"key":"scholarship-ann","value":"http://www.operauni.tn.it/-/bandi-a-a-2017-2018"},{"key":"scolarship","value":"https://infostudenti.unitn.it/it/domanda-borsa-di-studio-e-posto-alloggio-2017-18"},{"key":"taxes","value":"http://infostudenti.unitn.it/it/tasse-anno-accademico-2017-18-cittadini-ue"},{"key":"thesis","value":"http://infostudenti.unitn.it/it/studiare-e-laurearsi/domanda-di-laurea-per-lauree-triennali"},{"key":"webcam","value":"http://www.operauni.tn.it/servizi/ristorazione/webcam"}{ "key":"ordinaMensa","value":"http://OperaUniversitaria/ordinaInMensa" }]
+            }
+
+
+
+
+## connecting to DB  [api/webhook]
+
+### Update or Create parameters [POST]   
+
++ Response 200 (application/json)
+
+            {
+  "id": "607493b3-9785-4872-8281-060237872c2a",
+  "timestamp": "2017-12-12T15:57:24.716Z",
+  "lang": "it",
+  "result": {
+    "source": "agent",
+    "resolvedQuery": "studentato",
+    "action": "",
+    "actionIncomplete": false,
+    "parameters": {},
+    "contexts": [],
+    "metadata": {
+      "intentId": "5ecf5054-f23d-412e-b154-c9629b212546",
+      "webhookUsed": "true",
+      "webhookForSlotFillingUsed": "false",
+      "webhookResponseTime": 533,
+      "intentName": "Alloggio universitario"
+    },
+    "fulfillment": {
+      "speech": "L'Opera Universitaria mette a disposizione degli studenti fuori sede circa 1.500 posti alloggio, in residenze collettive o appartamenti. I principali requisiti per ottenere un posto alloggio sono stabiliti dai BANDI e riguardano: la condizione economica, la composizione del nucleo familiare e requisiti di merito (solo per studenti iscritti ad anni successivi al primo). I posti alloggio dell’Opera Universitaria sono situati in zone da cui è facile raggiungere i Dipartimenti, a piedi, in bicicletta o con mezzi pubblici (Trentino Trasporti). L’Opera Universitaria fornisce la biancheria da letto, gli asciugamani e le coperte solamente nello Studentato San Bartolameo, nel Collegio di Merito Bernardo Clesio e nell’Opera Barelli (Rovereto). L’attrezzatura da cucina (piatti, pentole, posate, ecc...) non è mai fornita. \nPer ulteriori informazioni consulatere lo Sportello Info Alloggi - 140 ,via della Malpensada, aperto dal lunedì al venerdì dalle 9.30 alle 12, mercoledì anche dalle 14 alle 16   o chiamare il  (+39) 0461.217450",
+      "messages": [
+        {
+          "type": 0,
+          "speech": "L'Opera Universitaria mette a disposizione degli studenti fuori sede circa 1.500 posti alloggio, in residenze collettive o appartamenti. I principali requisiti per ottenere un posto alloggio sono stabiliti dai BANDI e riguardano: la condizione economica, la composizione del nucleo familiare e requisiti di merito (solo per studenti iscritti ad anni successivi al primo). I posti alloggio dell’Opera Universitaria sono situati in zone da cui è facile raggiungere i Dipartimenti, a piedi, in bicicletta o con mezzi pubblici (Trentino Trasporti). L’Opera Universitaria fornisce la biancheria da letto, gli asciugamani e le coperte solamente nello Studentato San Bartolameo, nel Collegio di Merito Bernardo Clesio e nell’Opera Barelli (Rovereto). L’attrezzatura da cucina (piatti, pentole, posate, ecc...) non è mai fornita. \nPer ulteriori informazioni consulatere lo Sportello Info Alloggi - 140 ,via della Malpensada, aperto dal lunedì al venerdì dalle 9.30 alle 12, mercoledì anche dalle 14 alle 16   o chiamare il  (+39) 0461.217450"
+        }
+      ]
+    },
+    "score": 1
+  },
+  "status": {
+    "code": 200,
+    "errorType": "success",
+    "webhookTimedOut": false
+  },
+  "sessionId": "057824c6-576f-4b56-af33-315c94888859"
+}
+

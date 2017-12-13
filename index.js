@@ -168,7 +168,7 @@ app.post('/api/intents', function(req, res){
 					body:json_obj
 					}, function(error, response, body){
 					  //console.log(cachedIntent);
-					  console.log(body);
+					  //console.log(body);
 					  if(!error)
 						{
 							var options = {
@@ -231,7 +231,6 @@ app.post('/api/intents', function(req, res){
 							});
 						}
 					});
-					
 				})}));
 				//console.log(JSON.stringify(json_obj));
 			}
