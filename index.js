@@ -32,6 +32,10 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
+app.get('/admin', (req, res) => {
+   res.sendFile(path.join(__dirname, 'Admin page/admin.html'));
+ });
+
 function returnParameters(res){
 	Parameter.find({}).sort('key').exec(function (err, table) {
 		var parameters = [];
