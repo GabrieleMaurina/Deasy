@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!--
+Made by EnricoGdx 
+front end for an admin page that given username and password, shows the table from the database and allows to modify it
+-->
+<html>
+    <head>
+        <script type="text/javascript" src="admin_methods.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+        <title> Admin </title>
+    </head>
+
+
+    <body>
+        <form>
+            <label> username </label>
+            <input type="text" id="username" placeholder="username" required>
+
+            <label> password </label>
+            <input type="password" id="password" placeholder="password" required
+                   onkeydown = "if (event.keyCode == 13)document.getElementById('authentication').click()" >
+        </form>
+
+        <button id= "authentication" onclick="authentication()">Confirm</button>
+
+        <br>
+        <P id="not_accepted" style="visibility: hidden;" > username or password wrong </p>
+        <br>
+
+        <form action=""> 
+            <select id="parameters_or_intent" onChange="intent_or_parameters()" style="visibility: hidden;">
+                <option value="">Select parameters or intent:</option>
+                <option value="parameters">parameters</option>
+                <option value="intent">intent</option>
+            </select>
+        </form>
+
+        <br>
+
+        <div id="modify_parameters" style="visibility: hidden;" > 
+            <form action=""> 
+                <select id="operation_parameters">
+                    <option value="">Select an operation:</option>
+                    <option value="remove">remove</option>
+                    <option value="modify">modify or add</option>
+                </select>
+            </form>
+
+            <label> parameters</label>
+            <input type="text" id="parameters_name" placeholder="parameters" required>
+
+            <textarea id="parameters_function" rows="6" cols="70"> 
+            </textarea>
+
+            <br>
+
+            <P id="errore_parameters" style="visibility: hidden;" > You can only write a content or upload a file </p>
+
+            <button onclick="modify_parameters()">Confirm</button>
+        </div>
+
+        <div id="modify_intent" style="visibility: hidden;" > 
+            <form action=""> 
+                <select id="operation_intent">
+                    <option value="">Select an operation:</option>
+                    <option value="remove">remove</option>
+                    <option value="modify">modify or add</option>
+                </select>
+            </form>
+
+            <label> name of the intent</label>
+            <input type="text" id="intent_name" placeholder="intent_name" required>
+
+            <textarea id="intent_answer" rows="6" cols="70"> 
+            </textarea>
+
+            <button onclick="modify_intent()">Confirm</button>
+        </div>
+
+        <br>
+
+        <div id="tabella">
+
+        </div>
+
+    </body>
+
+
+</html>

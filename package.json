@@ -1,0 +1,21 @@
+{
+  "name": "deasybot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.6.0",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "mongoose": "^4.13.4",
+    "request": "^2.83.0"
+  },
+  "devDependencies": {
+    "mocha": "^4.0.1"
+  }
+}

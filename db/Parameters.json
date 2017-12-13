@@ -1,0 +1,66 @@
+[
+    {
+        "key": "bilateral",
+        "value": "http://international.unitn.it/outgoing/bilateral-agreements"
+    },
+    {
+        "key": "erasmusMundus",
+        "value": "http://international.unitn.it/outgoing/erasmus-mundus-programme"
+    },
+    {
+        "key": "erasmusPlus",
+        "value": "http://international.unitn.it/outgoing/erasmus-study-and-traineeship"
+    },
+    {
+        "key": "international",
+        "value": "http://international.unitn.it/outgoing/programmes"
+    },
+    {
+        "key": "internship",
+        "value": "http://www.disi.unitn.it/it/internship"
+    },
+    {
+        "key": "menu",
+        "value": "http://www.operauni.tn.it/servizi/ristorazione/menu"
+    },
+    {
+        "key": "menuTypes",
+        "value": "http://www.operauni.tn.it/documents/10603/20928/Tipologie+men%C3%B9/5f5dadc2-00b4-4fa0-8bf1-588ff968919d?version=1.3"
+    },
+    {
+        "key": "nextDown",
+        "value": "nextDown"
+    },
+    {
+        "key": "nextTrainDown",
+        "value": "nextTrainDown"
+    },
+    {
+        "key": "nextTrainUp",
+        "value": "nextTrainUp"
+    },
+    {
+        "key": "nextUp",
+        "value": "nextUp"
+    },
+    {
+        "key": "scholarship-ann",
+        "value": "http://www.operauni.tn.it/-/bandi-a-a-2017-2018"
+    },
+    {
+        "key": "scolarship",
+        "value": "https://infostudenti.unitn.it/it/domanda-borsa-di-studio-e-posto-alloggio-2017-18"
+    },
+    {
+        "key": "taxes",
+        "value": "http://infostudenti.unitn.it/it/tasse-anno-accademico-2017-18-cittadini-ue"
+    },
+    {
+        "key": "thesis",
+        "value": "http://infostudenti.unitn.it/it/studiare-e-laurearsi/domanda-di-laurea-per-lauree-triennali"
+    },
+    {
+        "key": "webcam",
+        "value": "http://www.operauni.tn.it/servizi/ristorazione/webcam"
+    }
+]
