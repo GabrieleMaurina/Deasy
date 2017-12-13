@@ -123,7 +123,6 @@ function wrapper(index, callback)
 
 app.post('/api/intents', function(req, res){
 	var newIntents = req.body;
-	var DBUpdates = [];
 	var DialogUpdates = [];
 	Intent.find({}).sort('key').exec(function (err, table) {
 		var oldIntents = [];
@@ -168,22 +167,24 @@ app.post('/api/intents', function(req, res){
 					url:'https://api.dialogflow.com/v1/intents/'+cachedIntent.id+'?v=20150910',
 					body:json_obj
 					}, function(error, response, body){
-					  console.log(newIntents[i]);
+					  //console.log(cachedIntent);
+					  //console.log(body);
 					  if(!error)
 						{
 							var options = {
 								upsert: true
 							};
-							DBUpdates.push(Intent.findOneAndUpdate({key: cachedIntent.key},cachedIntent,options).exec());
+							Intent.findOneAndUpdate({key: cachedIntent.key},cachedIntent,options).exec(function(){
+								resolve("");
+							});
 						}
-					})
-					resolve("");
+					});
 				})}));
-				console.log(JSON.stringify(json_obj));
+				console.log(json_obj);
 			}
 			else
 			{
-				console.log("no " + newIntents[i].key);
+				//console.log("no " + newIntents[i].key);
 				var questions = []
 				for(q in newIntents[i].questions){
 					questions.push({
@@ -204,7 +205,9 @@ app.post('/api/intents', function(req, res){
 				  webhookForSlotFilling: false,
 				  webhookUsed: true
 				});
-				DialogUpdates.push(new Promise(function(resolve,reject){wrapper(newIntents[i], function(cachedIntent){
+				DialogUpdates.push(new Promise(function(resolve,reject){
+					wrapper(newIntents[i], function(cachedIntent){
+					console.log("DF",cachedIntent.key);
 					request.post({
 						headers: {'content-type':'application/json',
 									'Authorization': 'Bearer 7426f105132342d8b8c5a3b418c2be3d'},
@@ -222,22 +225,19 @@ app.post('/api/intents', function(req, res){
 								value:cachedIntent.value
 							}
 							//DBUpdates.push(Intent.findOneAndUpdate({key: tmpIntent.key},tmpIntent,options).exec());
-							DBUpdates.push(new Promise(function(resolve,reject){
-								Intent.findOneAndUpdate({key: tmpIntent.key},tmpIntent,options);
+							Intent.findOneAndUpdate({key: tmpIntent.key},tmpIntent,options).exec(function(){
+								//console.log("DB", tmpIntent.key);
 								resolve("");
-							}));
+							});
 						}
 					});
-					resolve("");
 				})}));
 				//console.log(JSON.stringify(json_obj));
 			}
 		}
-		return Promise.all(DialogUpdates).then((resolve,error)=>{
-			Promise.all(DBUpdates);
-		}).then((resolve,error)=>{
-				returnIntents(res);
-			});
+		return Promise.all(DialogUpdates).then(()=>{
+			returnIntents(res);
+		});
 		
     });
 	
